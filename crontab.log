@@ -17,3 +17,19 @@ To push the current branch and set the remote as upstream, use
  1 file changed, 7 insertions(+)
 To https://github.com/pandalabme/d2l.git
    7f28f12..fb63253  main -> main
+[main cace056] auto
+ 1 file changed, 4 insertions(+)
+To https://github.com/pandalabme/d2l.git
+   fb63253..cace056  main -> main
+fatal: detected dubious ownership in repository at '/home/ubuntu/develop/jupyter/d2l_solutions/notebooks'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /home/ubuntu/develop/jupyter/d2l_solutions/notebooks
+fatal: detected dubious ownership in repository at '/home/ubuntu/develop/jupyter/d2l_solutions/notebooks'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /home/ubuntu/develop/jupyter/d2l_solutions/notebooks
+fatal: detected dubious ownership in repository at '/home/ubuntu/develop/jupyter/d2l_solutions/notebooks'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /home/ubuntu/develop/jupyter/d2l_solutions/notebooks
