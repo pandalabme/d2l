@@ -45,3 +45,9 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    f9385ca..11dc100  main -> main
+[main b5196d3] auto
+ 3 files changed, 98 insertions(+)
+ create mode 100644 exercises/.ipynb_checkpoints/todo-checkpoint.ipynb
+ create mode 100644 exercises/todo.ipynb
+To https://github.com/pandalabme/d2l.git
+   11dc100..b5196d3  main -> main
