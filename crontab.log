@@ -33,3 +33,7 @@ fatal: detected dubious ownership in repository at '/home/ubuntu/develop/jupyter
 To add an exception for this directory, call:
 
 	git config --global --add safe.directory /home/ubuntu/develop/jupyter/d2l_solutions/notebooks
+[main 2adaf0f] auto
+ 3 files changed, 18 insertions(+), 2 deletions(-)
+To https://github.com/pandalabme/d2l.git
+   cace056..2adaf0f  main -> main
