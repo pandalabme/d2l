@@ -1,0 +1,8 @@
+[main 01a2761] auto
+ 2 files changed, 3 insertions(+)
+ create mode 100644 crontab.log
+ create mode 100644 run.sh
+remote: This repository moved. Please use the new location:        
+remote:   https://github.com/pandalabme/d2l.git        
+To https://github.com/pandalabme/d2l_solutions.git
+   9947185..01a2761  main -> main
