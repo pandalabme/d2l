@@ -51,3 +51,9 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/todo.ipynb
 To https://github.com/pandalabme/d2l.git
    11dc100..b5196d3  main -> main
+[main e7f0357] auto
+ 3 files changed, 488 insertions(+), 452 deletions(-)
+ rewrite exercises/ch4/.ipynb_checkpoints/4_1_5_Exercises-checkpoint.ipynb (86%)
+ rewrite exercises/ch4/4_1_5_Exercises.ipynb (86%)
+To https://github.com/pandalabme/d2l.git
+   b5196d3..e7f0357  main -> main
