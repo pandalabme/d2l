@@ -6,3 +6,10 @@ remote: This repository moved. Please use the new location:
 remote:   https://github.com/pandalabme/d2l.git        
 To https://github.com/pandalabme/d2l_solutions.git
    9947185..01a2761  main -> main
+[main 7f28f12] auto
+ 1 file changed, 8 insertions(+)
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin main
+
