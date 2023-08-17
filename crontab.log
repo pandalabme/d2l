@@ -155,3 +155,12 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/data/FashionMNIST/raw/train-labels-idx1-ubyte.gz
 To https://github.com/pandalabme/d2l.git
    e8dad4d..ed712bb  main -> main
+[main dbf022a] auto
+ 7 files changed, 1718 insertions(+), 274 deletions(-)
+ create mode 100644 exercises/ch4/.ipynb_checkpoints/4_2_5_Exercises-checkpoint.ipynb
+ rename exercises/ch4/.ipynb_checkpoints/{4_2_5-checkpoint.ipynb => 4_3_4_Exercises-checkpoint.ipynb} (100%)
+ delete mode 100644 exercises/ch4/4_2_5.ipynb
+ create mode 100644 exercises/ch4/4_2_5_Exercises.ipynb
+ create mode 100644 exercises/ch4/4_3_4_Exercises.ipynb
+To https://github.com/pandalabme/d2l.git
+   ed712bb..dbf022a  main -> main

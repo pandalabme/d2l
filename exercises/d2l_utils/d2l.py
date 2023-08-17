@@ -296,6 +296,22 @@ class LinearRegression(Module):
         fn = nn.MSELoss(reduction='mean')
         return fn(y_hat, y)
     
+
+class Classifier(Module):
+    def validation_step(self, batch):
+        y_hat = self(*batch[:-1])
+        self.plot('loss', self.loss(y_hat, batch[-1]), train=False)
+        self.plot('acc', self.accuracy(y_hat, batch[-1]), train=False)
+        
+    def configure_optimizers(self):
+        return torch.optim.SGD(self.parameters(), lr=self.lr)
+    
+    def accuracy(self, y_hat, y, averaged=True):
+        y_hat = y_hat.reshape((-1, y_hat.shape[-1]))
+        preds = y_hat.argmax(axis=1).type(y.dtype)
+        comp = (preds == y.reshape(-1)).type(torch.float32)
+        return comp.mean if averaged else comp
+    
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
 
