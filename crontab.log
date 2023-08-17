@@ -141,3 +141,17 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    38edce7..e8dad4d  main -> main
+[main ed712bb] auto
+ 14 files changed, 286 insertions(+), 2 deletions(-)
+ create mode 100644 exercises/ch4/.ipynb_checkpoints/4_2_5-checkpoint.ipynb
+ create mode 100644 exercises/ch4/4_2_5.ipynb
+ create mode 100644 exercises/data/FashionMNIST/raw/t10k-images-idx3-ubyte
+ create mode 100644 exercises/data/FashionMNIST/raw/t10k-images-idx3-ubyte.gz
+ create mode 100644 exercises/data/FashionMNIST/raw/t10k-labels-idx1-ubyte
+ create mode 100644 exercises/data/FashionMNIST/raw/t10k-labels-idx1-ubyte.gz
+ create mode 100644 exercises/data/FashionMNIST/raw/train-images-idx3-ubyte
+ create mode 100644 exercises/data/FashionMNIST/raw/train-images-idx3-ubyte.gz
+ create mode 100644 exercises/data/FashionMNIST/raw/train-labels-idx1-ubyte
+ create mode 100644 exercises/data/FashionMNIST/raw/train-labels-idx1-ubyte.gz
+To https://github.com/pandalabme/d2l.git
+   e8dad4d..ed712bb  main -> main
