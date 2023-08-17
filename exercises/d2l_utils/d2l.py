@@ -5,6 +5,8 @@ import collections
 from IPython import display
 import torch
 from torch import nn
+import torchvision
+from torchvision import transforms
 
 
 def add_to_class(Class):
@@ -298,11 +300,20 @@ class LinearRegression(Module):
     
 
 class Classifier(Module):
-    def validation_step(self, batch):
+    def training_step(self, batch, plot_flag=True):
         y_hat = self(*batch[:-1])
-        self.plot('loss', self.loss(y_hat, batch[-1]), train=False)
-        self.plot('acc', self.accuracy(y_hat, batch[-1]), train=False)
+        if plot_flag:
+            self.plot('loss', self.loss(y_hat, batch[-1]), train=True)
+            self.plot('acc', self.accuracy(y_hat, batch[-1]), train=True)
+        return self.loss(y_hat, batch[-1])
         
+    def validation_step(self, batch, plot_flag=True):
+        y_hat = self(*batch[:-1])
+        if plot_flag:
+            self.plot('loss', self.loss(y_hat, batch[-1]), train=False)
+            self.plot('acc', self.accuracy(y_hat, batch[-1]), train=False)
+        return self.loss(y_hat, batch[-1])
+    
     def configure_optimizers(self):
         return torch.optim.SGD(self.parameters(), lr=self.lr)
     
@@ -310,7 +321,39 @@ class Classifier(Module):
         y_hat = y_hat.reshape((-1, y_hat.shape[-1]))
         preds = y_hat.argmax(axis=1).type(y.dtype)
         comp = (preds == y.reshape(-1)).type(torch.float32)
-        return comp.mean if averaged else comp
+        return comp.mean() if averaged else comp
+    
+
+class FashionMNIST(DataModule):  #@save
+    """The Fashion-MNIST dataset."""
+    def __init__(self, batch_size=64, resize=(28, 28)):
+        super().__init__()
+        self.save_hyperparameters()
+        trans = transforms.Compose([transforms.Resize(resize),
+                                    transforms.ToTensor()])
+        self.train = torchvision.datasets.FashionMNIST(
+            root=self.root, train=True, transform=trans, download=True)
+        self.val = torchvision.datasets.FashionMNIST(
+            root=self.root, train=False, transform=trans, download=True)
+
+    def text_labels(self, indices):
+        """Return text labels."""
+        labels = ['t-shirt', 'trouser', 'pullover', 'dress', 'coat',
+                  'sandal', 'shirt', 'sneaker', 'bag', 'ankle boot']
+        return [labels[int(i)] for i in indices]
+        
+    def get_dataloader(self, train):
+        data = self.train if train else self.val
+        return torch.utils.data.DataLoader(data, self.batch_size, shuffle=train
+                                           , num_workers=self.num_workers)
+    
+    def visualize(self, batch, nrows=1, ncols=8, labels=[]):
+        """Defined in :numref:`sec_fashion_mnist`"""
+        X, y = batch
+        if not labels:
+            labels = self.text_labels(y)
+        show_images(X.squeeze(1), nrows, ncols, titles=labels)
+
     
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
@@ -365,3 +408,22 @@ def l2_penalty(w):
 
 def gen_logrithm_nums(initial_value = 5, growth_factor = 2, num_elements = 12):
     return [initial_value * growth_factor**i for i in range(num_elements)]
+
+def show_images(imgs, num_rows, num_cols, titles=None, scale=1.5):
+    """Plot a list of images.
+
+    Defined in :numref:`sec_utils`"""
+    figsize = (num_cols * scale, num_rows * scale)
+    _, axes = plt.subplots(num_rows, num_cols, figsize=figsize)
+    axes = axes.flatten()
+    for i, (ax, img) in enumerate(zip(axes, imgs)):
+        try:
+            img = img.detach.numpy()
+        except:
+            pass
+        ax.imshow(img)
+        ax.axes.get_xaxis().set_visible(False)
+        ax.axes.get_yaxis().set_visible(False)
+        if titles:
+            ax.set_title(titles[i])
+    return axes
