@@ -347,5 +347,5 @@ def plot(X, Y=None, xlabel=None, ylabel=None, legend=None, xlim=None,
 def l2_penalty(w):
     return (w**2).sum()/2
 
-def gen_logrithm_nums(initial_value = 5,growth_factor = 2,num_elements = 12):
+def gen_logrithm_nums(initial_value = 5, growth_factor = 2, num_elements = 12):
     return [initial_value * growth_factor**i for i in range(num_elements)]
