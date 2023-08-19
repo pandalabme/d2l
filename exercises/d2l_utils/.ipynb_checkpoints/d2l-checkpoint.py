@@ -7,7 +7,7 @@ import torch
 from torch import nn
 import torchvision
 from torchvision import transforms
-
+from torch.nn import functional as F
 
 def add_to_class(Class):
     def wrapper(obj):
@@ -354,6 +354,23 @@ class FashionMNIST(DataModule):  #@save
             labels = self.text_labels(y)
         show_images(X.squeeze(1), nrows, ncols, titles=labels)
 
+    
+class SoftmaxRegression(Classifier):
+    def __init__(self, num_outputs, lr):
+        super().__init__()
+        self.save_hyperparameters()
+        self.net = nn.Sequential(nn.Flatten(),
+                                  nn.LazyLinear(num_outputs))
+        
+    def forward(self, X):
+        return self.net(X)
+    
+    def loss(self, y_hat, y, averaged=True):
+        y_hat = y_hat.reshape((-1, y_hat.shape[-1]))
+        y = y.reshape((-1,))
+        return F.cross_entropy(y_hat, y, reduction='mean' 
+                               if averaged else 'none')
+    
     
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
