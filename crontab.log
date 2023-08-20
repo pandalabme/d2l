@@ -423,3 +423,10 @@ Your branch is up to date with 'origin/main'.
 
 nothing to commit, working tree clean
 Everything up-to-date
+[main 3c78ec9] auto
+ 5 files changed, 661 insertions(+), 10 deletions(-)
+ create mode 100644 exercises/ch3/.ipynb_checkpoints/3_5_6_Exercises-checkpoint.md
+ create mode 100644 exercises/ch3/.ipynb_checkpoints/3_6_5_Exercises-checkpoint.md
+ create mode 100644 exercises/ch3/.ipynb_checkpoints/3_7_6_Exercises-checkpoint.md
+To https://github.com/pandalabme/d2l.git
+   20cfef1..3c78ec9  main -> main
