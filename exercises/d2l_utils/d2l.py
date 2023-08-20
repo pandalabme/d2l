@@ -344,6 +344,7 @@ class FashionMNIST(DataModule):  #@save
         
     def get_dataloader(self, train):
         data = self.train if train else self.val
+        print(data.data.shape)
         return torch.utils.data.DataLoader(data, self.batch_size, shuffle=train
                                            , num_workers=self.num_workers)
     
@@ -363,6 +364,7 @@ class SoftmaxRegression(Classifier):
                                   nn.LazyLinear(num_outputs))
         
     def forward(self, X):
+        print(X.shape)
         return self.net(X)
     
     def loss(self, y_hat, y, averaged=True):
