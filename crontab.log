@@ -484,3 +484,26 @@ To https://github.com/pandalabme/d2l.git
  6 files changed, 9885 insertions(+), 2076 deletions(-)
 To https://github.com/pandalabme/d2l.git
    95e2d37..c840b12  main -> main
+[main 4e321a0] auto
+ 19 files changed, 10245 insertions(+), 4749 deletions(-)
+ create mode 100644 exercises/ch4/.ipynb_checkpoints/4_7_7_Exercises-checkpoint.md
+ create mode 100644 exercises/ch4/4_7_7_Exercises.md
+ create mode 100644 exercises/ch4/4_7_7_Exercises_files/4_7_7_Exercises_12_1.svg
+ create mode 100644 exercises/ch4/4_7_7_Exercises_files/4_7_7_Exercises_13_1.svg
+ create mode 100644 exercises/ch4/4_7_7_Exercises_files/4_7_7_Exercises_7_2.svg
+ create mode 100644 exercises/ch4/4_7_7_Exercises_files/4_7_7_Exercises_7_3.svg
+ create mode 100644 exercises/ch4/4_7_7_Exercises_files/4_7_7_Exercises_8_2.svg
+ create mode 100644 exercises/ch4/4_7_7_Exercises_files/4_7_7_Exercises_8_3.svg
+ create mode 100644 exercises/data/QMNIST/raw/qmnist-test-images-idx3-ubyte
+ create mode 100644 exercises/data/QMNIST/raw/qmnist-test-images-idx3-ubyte.gz
+ create mode 100644 exercises/data/QMNIST/raw/qmnist-test-labels-idx2-int
+ create mode 100644 exercises/data/QMNIST/raw/qmnist-test-labels-idx2-int.gz
+ create mode 100644 exercises/data/QMNIST/raw/qmnist-train-images-idx3-ubyte
+ create mode 100644 exercises/data/QMNIST/raw/qmnist-train-images-idx3-ubyte.gz
+ create mode 100644 exercises/data/QMNIST/raw/qmnist-train-labels-idx2-int
+ create mode 100644 exercises/data/QMNIST/raw/qmnist-train-labels-idx2-int.gz
+To https://github.com/pandalabme/d2l.git
+   c840b12..4e321a0  main -> main
+error: file write error: No space left on device
+fatal: unable to write loose object file
+error: file write error: No space 
