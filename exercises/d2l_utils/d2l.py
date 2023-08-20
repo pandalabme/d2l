@@ -213,7 +213,6 @@ class Trainer(HyperParameters):
         for batch in self.train_dataloader:
             # if len(batch[0]) != 32:
             #     print(len(batch[0]))
-            print(type(self.model))
             loss = self.model.training_step(self.prepare_batch(batch),
                                             plot_flag=self.plot_flag)
             # print(f'step train loss:{loss}, T:{self.model.T}')
@@ -306,7 +305,7 @@ class Classifier(Module):
         y_hat = self(*batch[:-1])
         # auc = torch.tensor(roc_auc_score(batch[-1].detach().numpy() , y_hat[:,1].detach().numpy()))
         if plot_flag:
-            self.plot('loss', self.loss(y_hat, batch[-1]), train=True)
+            # self.plot('loss', self.loss(y_hat, batch[-1]), train=True)
             # self.plot('auc', auc, train=True)
             self.plot('acc', self.accuracy(y_hat, batch[-1]), train=True)
         return self.loss(y_hat, batch[-1])
@@ -315,7 +314,7 @@ class Classifier(Module):
         y_hat = self(*batch[:-1])
         # auc = torch.tensor(roc_auc_score(batch[-1].detach().numpy() , y_hat[:,1].detach().numpy()))
         if plot_flag:
-            self.plot('loss', self.loss(y_hat, batch[-1]), train=False)
+            # self.plot('loss', self.loss(y_hat, batch[-1]), train=False)
             # self.plot('auc', auc, train=True)
             self.plot('acc', self.accuracy(y_hat, batch[-1]), train=False)
         return self.loss(y_hat, batch[-1])
