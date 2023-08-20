@@ -444,3 +444,23 @@ To https://github.com/pandalabme/d2l.git
  rewrite exercises/d2l_utils/__pycache__/d2l.cpython-311.pyc (64%)
 To https://github.com/pandalabme/d2l.git
    430605e..6df5d6e  main -> main
+[main a4b7e82] auto
+ 19 files changed, 3027 insertions(+), 292 deletions(-)
+ create mode 100644 exercises/data/KMNIST/raw/t10k-images-idx3-ubyte
+ create mode 100644 exercises/data/KMNIST/raw/t10k-images-idx3-ubyte.gz
+ create mode 100644 exercises/data/KMNIST/raw/t10k-labels-idx1-ubyte
+ create mode 100644 exercises/data/KMNIST/raw/t10k-labels-idx1-ubyte.gz
+ create mode 100644 exercises/data/KMNIST/raw/train-images-idx3-ubyte
+ create mode 100644 exercises/data/KMNIST/raw/train-images-idx3-ubyte.gz
+ create mode 100644 exercises/data/KMNIST/raw/train-labels-idx1-ubyte
+ create mode 100644 exercises/data/KMNIST/raw/train-labels-idx1-ubyte.gz
+ create mode 100644 exercises/data/MNIST/raw/t10k-images-idx3-ubyte
+ create mode 100644 exercises/data/MNIST/raw/t10k-images-idx3-ubyte.gz
+ create mode 100644 exercises/data/MNIST/raw/t10k-labels-idx1-ubyte
+ create mode 100644 exercises/data/MNIST/raw/t10k-labels-idx1-ubyte.gz
+ create mode 100644 exercises/data/MNIST/raw/train-images-idx3-ubyte
+ create mode 100644 exercises/data/MNIST/raw/train-images-idx3-ubyte.gz
+ create mode 100644 exercises/data/MNIST/raw/train-labels-idx1-ubyte
+ create mode 100644 exercises/data/MNIST/raw/train-labels-idx1-ubyte.gz
+To https://github.com/pandalabme/d2l.git
+   6df5d6e..a4b7e82  main -> main
