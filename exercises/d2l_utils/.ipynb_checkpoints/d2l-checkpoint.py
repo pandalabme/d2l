@@ -213,6 +213,7 @@ class Trainer(HyperParameters):
         for batch in self.train_dataloader:
             # if len(batch[0]) != 32:
             #     print(len(batch[0]))
+            print(type(self.model))
             loss = self.model.training_step(self.prepare_batch(batch),
                                             plot_flag=self.plot_flag)
             # print(f'step train loss:{loss}, T:{self.model.T}')
