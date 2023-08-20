@@ -506,4 +506,23 @@ To https://github.com/pandalabme/d2l.git
    c840b12..4e321a0  main -> main
 error: file write error: No space left on device
 fatal: unable to write loose object file
-error: file write error: No space 
+error: file write error: No space [main 4abdbb6] auto
+ 18 files changed, 2412 insertions(+), 553 deletions(-)
+ delete mode 100644 exercises/data/KMNIST/raw/t10k-images-idx3-ubyte
+ delete mode 100644 exercises/data/KMNIST/raw/t10k-images-idx3-ubyte.gz
+ delete mode 100644 exercises/data/KMNIST/raw/t10k-labels-idx1-ubyte
+ delete mode 100644 exercises/data/KMNIST/raw/t10k-labels-idx1-ubyte.gz
+ delete mode 100644 exercises/data/KMNIST/raw/train-images-idx3-ubyte
+ delete mode 100644 exercises/data/KMNIST/raw/train-images-idx3-ubyte.gz
+ delete mode 100644 exercises/data/KMNIST/raw/train-labels-idx1-ubyte
+ delete mode 100644 exercises/data/KMNIST/raw/train-labels-idx1-ubyte.gz
+ delete mode 100644 exercises/data/QMNIST/raw/qmnist-test-images-idx3-ubyte
+ delete mode 100644 exercises/data/QMNIST/raw/qmnist-test-images-idx3-ubyte.gz
+ delete mode 100644 exercises/data/QMNIST/raw/qmnist-test-labels-idx2-int
+ delete mode 100644 exercises/data/QMNIST/raw/qmnist-test-labels-idx2-int.gz
+ delete mode 100644 exercises/data/QMNIST/raw/qmnist-train-images-idx3-ubyte
+ delete mode 100644 exercises/data/QMNIST/raw/qmnist-train-images-idx3-ubyte.gz
+ delete mode 100644 exercises/data/QMNIST/raw/qmnist-train-labels-idx2-int
+ delete mode 100644 exercises/data/QMNIST/raw/qmnist-train-labels-idx2-int.gz
+To https://github.com/pandalabme/d2l.git
+   4e321a0..4abdbb6  main -> main
