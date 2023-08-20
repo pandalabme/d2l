@@ -8,6 +8,7 @@ from torch import nn
 import torchvision
 from torchvision import transforms
 from torch.nn import functional as F
+from sklearn.metrics import roc_auc_score
 
 def add_to_class(Class):
     def wrapper(obj):
@@ -302,15 +303,19 @@ class LinearRegression(Module):
 class Classifier(Module):
     def training_step(self, batch, plot_flag=True):
         y_hat = self(*batch[:-1])
+        # auc = torch.tensor(roc_auc_score(batch[-1].detach().numpy() , y_hat[:,1].detach().numpy()))
         if plot_flag:
             self.plot('loss', self.loss(y_hat, batch[-1]), train=True)
+            # self.plot('auc', auc, train=True)
             self.plot('acc', self.accuracy(y_hat, batch[-1]), train=True)
         return self.loss(y_hat, batch[-1])
         
     def validation_step(self, batch, plot_flag=True):
         y_hat = self(*batch[:-1])
+        # auc = torch.tensor(roc_auc_score(batch[-1].detach().numpy() , y_hat[:,1].detach().numpy()))
         if plot_flag:
             self.plot('loss', self.loss(y_hat, batch[-1]), train=False)
+            # self.plot('auc', auc, train=True)
             self.plot('acc', self.accuracy(y_hat, batch[-1]), train=False)
         return self.loss(y_hat, batch[-1])
     
@@ -344,7 +349,6 @@ class FashionMNIST(DataModule):  #@save
         
     def get_dataloader(self, train):
         data = self.train if train else self.val
-        print(data.data.shape)
         return torch.utils.data.DataLoader(data, self.batch_size, shuffle=train
                                            , num_workers=self.num_workers)
     
@@ -364,7 +368,6 @@ class SoftmaxRegression(Classifier):
                                   nn.LazyLinear(num_outputs))
         
     def forward(self, X):
-        print(X.shape)
         return self.net(X)
     
     def loss(self, y_hat, y, averaged=True):
