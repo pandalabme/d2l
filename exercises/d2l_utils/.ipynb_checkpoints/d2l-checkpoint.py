@@ -305,7 +305,7 @@ class Classifier(Module):
         y_hat = self(*batch[:-1])
         # auc = torch.tensor(roc_auc_score(batch[-1].detach().numpy() , y_hat[:,1].detach().numpy()))
         if plot_flag:
-            # self.plot('loss', self.loss(y_hat, batch[-1]), train=True)
+            self.plot('loss', self.loss(y_hat, batch[-1]), train=True)
             # self.plot('auc', auc, train=True)
             self.plot('acc', self.accuracy(y_hat, batch[-1]), train=True)
         return self.loss(y_hat, batch[-1])
@@ -314,7 +314,7 @@ class Classifier(Module):
         y_hat = self(*batch[:-1])
         # auc = torch.tensor(roc_auc_score(batch[-1].detach().numpy() , y_hat[:,1].detach().numpy()))
         if plot_flag:
-            # self.plot('loss', self.loss(y_hat, batch[-1]), train=False)
+            self.plot('loss', self.loss(y_hat, batch[-1]), train=False)
             # self.plot('auc', auc, train=True)
             self.plot('acc', self.accuracy(y_hat, batch[-1]), train=False)
         return self.loss(y_hat, batch[-1])
