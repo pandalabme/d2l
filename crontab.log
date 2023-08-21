@@ -632,3 +632,31 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch5/5_2_4_Exercises_part2.ipynb
 To https://github.com/pandalabme/d2l.git
    5a671bc..b6e3b9c  main -> main
+[main 387adcb] auto
+ 28 files changed, 67103 insertions(+), 50 deletions(-)
+ create mode 100644 exercises/ch5/.ipynb_checkpoints/5_2_4_Exercises-checkpoint.md
+ create mode 100644 exercises/ch5/.ipynb_checkpoints/5_2_4_Exercises_part2-checkpoint.md
+ create mode 100644 exercises/ch5/.ipynb_checkpoints/5_3_6_Exercises-checkpoint.ipynb
+ create mode 100644 exercises/ch5/5_2_4_Exercises.md
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_10_1.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_15_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_16_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_17_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_18_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_19_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_1_1.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_20_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_21_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_29_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_2_1.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_files/5_2_4_Exercises_6_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_part2.md
+ create mode 100644 exercises/ch5/5_2_4_Exercises_part2_files/.ipynb_checkpoints/5_2_4_Exercises_part2_15_0-checkpoint.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_part2_files/5_2_4_Exercises_part2_14_0.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_part2_files/5_2_4_Exercises_part2_14_1.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_part2_files/5_2_4_Exercises_part2_14_2.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_part2_files/5_2_4_Exercises_part2_14_3.svg
+ create mode 100644 exercises/ch5/5_2_4_Exercises_part2_files/5_2_4_Exercises_part2_15_0.svg
+ create mode 100644 exercises/ch5/5_3_6_Exercises.ipynb
+To https://github.com/pandalabme/d2l.git
+   b6e3b9c..387adcb  main -> main

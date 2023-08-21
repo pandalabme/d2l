@@ -382,6 +382,40 @@ class SoftmaxRegression(Classifier):
         return F.cross_entropy(y_hat, y, reduction='mean' 
                                if averaged else 'none')
     
+class MulMLP(Classifier):
+    def __init__(self, num_outputs, num_hiddens, lr):
+        super().__init__()
+        self.save_hyperparameters()
+        layers = [nn.Flatten()]
+        for num in num_hiddens:
+            layers.append(nn.LazyLinear(num))
+            layers.append(nn.ReLU())
+        layers.append(nn.LazyLinear(num_outputs))
+        self.net = nn.Sequential(*layers)
+        
+class MulMLPScratch(Classifier):
+    def __init__(self, num_inputs, num_outputs, num_hiddens, lr, sigma=0.01):
+        super().__init__()
+        self.save_hyperparameters()
+        bef = num_inputs
+        self.W = []
+        self.b = []
+        for num_hidden in num_hiddens:
+            self.W.append(nn.Parameter(torch.randn(bef, num_hidden)*sigma))
+            self.b.append(nn.Parameter(torch.zeros(num_hidden)))
+            bef = num_hidden
+        self.W.append(nn.Parameter(torch.randn(bef, num_outputs)*sigma))
+        self.b.append(nn.Parameter(torch.zeros(num_outputs)))
+        
+        
+    def forward(self, X):
+        H = X.reshape(-1, self.num_inputs)
+        for i in range(len(self.W)-1):
+            H = relu(torch.matmul(H, self.W[i]) + self.b[i])
+        return torch.matmul(H, self.W[-1]) + self.b[-1]
+    
+    def configure_optimizers(self):
+        return d2l.SGD([*self.W, *self.b], self.lr)
     
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
@@ -455,3 +489,7 @@ def show_images(imgs, num_rows, num_cols, titles=None, scale=1.5):
         if titles:
             ax.set_title(titles[i])
     return axes
+
+def relu(x):
+    a = torch.zeros_like(x)
+    return torch.max(x, a)
