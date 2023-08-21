@@ -664,3 +664,9 @@ To https://github.com/pandalabme/d2l.git
  6 files changed, 998 insertions(+), 7 deletions(-)
 To https://github.com/pandalabme/d2l.git
    387adcb..d8643f8  main -> main
+[main 6760be4] auto
+ 7 files changed, 182 insertions(+), 173 deletions(-)
+ create mode 100644 exercises/ch5/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+ create mode 100644 exercises/ch5/Untitled.ipynb
+To https://github.com/pandalabme/d2l.git
+   d8643f8..6760be4  main -> main
