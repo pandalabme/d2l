@@ -406,6 +406,8 @@ class MulMLPScratch(Classifier):
             bef = num_hidden
         self.W.append(nn.Parameter(torch.randn(bef, num_outputs)*sigma))
         self.b.append(nn.Parameter(torch.zeros(num_outputs)))
+        self.fc_weights = nn.ParameterList(self.W)
+        self.fc_bs = nn.ParameterList(self.b)
         
         
     def forward(self, X):

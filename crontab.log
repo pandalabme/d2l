@@ -660,3 +660,7 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch5/5_3_6_Exercises.ipynb
 To https://github.com/pandalabme/d2l.git
    b6e3b9c..387adcb  main -> main
+[main d8643f8] auto
+ 6 files changed, 998 insertions(+), 7 deletions(-)
+To https://github.com/pandalabme/d2l.git
+   387adcb..d8643f8  main -> main
