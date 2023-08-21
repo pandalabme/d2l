@@ -670,3 +670,13 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch5/Untitled.ipynb
 To https://github.com/pandalabme/d2l.git
    d8643f8..6760be4  main -> main
+[main e6b5fdd] auto
+ 9 files changed, 718 insertions(+), 19 deletions(-)
+ create mode 100644 exercises/ch5/.ipynb_checkpoints/5_3_6_Exercises-checkpoint.md
+ rename exercises/ch5/.ipynb_checkpoints/{Untitled-checkpoint.ipynb => 5_4_4_Exercises-checkpoint.ipynb} (100%)
+ create mode 100644 exercises/ch5/5_3_6_Exercises.md
+ create mode 100644 exercises/ch5/5_3_6_Exercises_files/5_3_6_Exercises_4_0.svg
+ create mode 100644 exercises/ch5/5_4_4_Exercises.ipynb
+ delete mode 100644 exercises/ch5/Untitled.ipynb
+To https://github.com/pandalabme/d2l.git
+   6760be4..e6b5fdd  main -> main
