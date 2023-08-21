@@ -607,3 +607,7 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch5/data/FashionMNIST/raw/train-labels-idx1-ubyte.gz
 To https://github.com/pandalabme/d2l.git
    e14fc8b..fa968cc  main -> main
+[main bbdbfc5] auto
+ 3 files changed, 11416 insertions(+), 131 deletions(-)
+To https://github.com/pandalabme/d2l.git
+   fa968cc..bbdbfc5  main -> main
