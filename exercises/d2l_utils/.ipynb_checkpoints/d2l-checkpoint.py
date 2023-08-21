@@ -328,6 +328,12 @@ class Classifier(Module):
         comp = (preds == y.reshape(-1)).type(torch.float32)
         return comp.mean() if averaged else comp
     
+    def loss(self, y_hat, y, averaged=True):
+        y_hat = y_hat.reshape((-1, y_hat.shape[-1]))
+        y = y.reshape((-1,))
+        return F.cross_entropy(y_hat, y, reduction='mean' 
+                               if averaged else 'none')
+    
 
 class FashionMNIST(DataModule):  #@save
     """The Fashion-MNIST dataset."""
