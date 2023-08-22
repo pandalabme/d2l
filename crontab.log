@@ -783,3 +783,8 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/data/kaggle_house_pred_train.csv
 To https://github.com/pandalabme/d2l.git
    25de13d..3179f51  main -> main
+[main 41d0add] auto
+ 5 files changed, 2137 insertions(+), 117 deletions(-)
+ rewrite exercises/ch5/5_7_10_Exercises.ipynb (68%)
+To https://github.com/pandalabme/d2l.git
+   3179f51..41d0add  main -> main
