@@ -9,6 +9,11 @@ import torchvision
 from torchvision import transforms
 from torch.nn import functional as F
 from sklearn.metrics import roc_auc_score
+import os
+import requests
+
+DATA_HUB = dict()
+DATA_URL = 'http://d2l-data.s3-accelerate.amazonaws.com/'
 
 def add_to_class(Class):
     def wrapper(obj):
@@ -495,3 +500,30 @@ def show_images(imgs, num_rows, num_cols, titles=None, scale=1.5):
 def relu(x):
     a = torch.zeros_like(x)
     return torch.max(x, a)
+
+def download(url, folder='../data', sha1_hash=None):
+    """Download a file to folder and return the local filepath.
+
+    Defined in :numref:`sec_utils`"""
+    if not url.startswith('http'):
+        # For back compatability
+        url, sha1_hash = DATA_HUB[url]
+    os.makedirs(folder, exist_ok=True)
+    fname = os.path.join(folder, url.split('/')[-1])
+    # Check if hit cache
+    if os.path.exists(fname) and sha1_hash:
+        sha1 = hashlib.sha1()
+        with open(fname, 'rb') as f:
+            while True:
+                data = f.read(1048576)
+                if not data:
+                    break
+                sha1.update(data)
+        if sha1.hexdigest() == sha1_hash:
+            return fname
+    # Download
+    print(f'Downloading {fname} from {url}...')
+    r = requests.get(url, stream=True, verify=True)
+    with open(fname, 'wb') as f:
+        f.write(r.content)
+    return fname
