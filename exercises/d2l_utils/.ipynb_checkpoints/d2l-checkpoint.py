@@ -11,6 +11,7 @@ from torch.nn import functional as F
 from sklearn.metrics import roc_auc_score
 import os
 import requests
+import hashlib
 
 DATA_HUB = dict()
 DATA_URL = 'http://d2l-data.s3-accelerate.amazonaws.com/'

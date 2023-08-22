@@ -766,3 +766,20 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch5/5_7_10_Exercises.ipynb
 To https://github.com/pandalabme/d2l.git
    f9c3469..25de13d  main -> main
+[main 3179f51] auto
+ 20 files changed, 32894 insertions(+), 27 deletions(-)
+ create mode 100644 exercises/ch5/.ipynb_checkpoints/5_6_5_Exercises-checkpoint.md
+ create mode 100644 exercises/ch5/5_6_5_Exercises.md
+ create mode 100644 exercises/ch5/5_6_5_Exercises_files/5_6_5_Exercises_13_1.svg
+ create mode 100644 exercises/ch5/5_6_5_Exercises_files/5_6_5_Exercises_14_1.svg
+ create mode 100644 exercises/ch5/5_6_5_Exercises_files/5_6_5_Exercises_1_1.svg
+ create mode 100644 exercises/ch5/5_6_5_Exercises_files/5_6_5_Exercises_21_0.svg
+ create mode 100644 exercises/ch5/5_6_5_Exercises_files/5_6_5_Exercises_25_1.svg
+ create mode 100644 exercises/ch5/5_6_5_Exercises_files/5_6_5_Exercises_2_1.svg
+ create mode 100644 exercises/ch5/5_6_5_Exercises_files/5_6_5_Exercises_30_1.svg
+ create mode 100644 exercises/ch5/5_6_5_Exercises_files/5_6_5_Exercises_5_0.svg
+ create mode 100644 exercises/ch5/5_6_5_Exercises_files/5_6_5_Exercises_8_0.svg
+ create mode 100644 exercises/data/kaggle_house_pred_test.csv
+ create mode 100644 exercises/data/kaggle_house_pred_train.csv
+To https://github.com/pandalabme/d2l.git
+   25de13d..3179f51  main -> main
