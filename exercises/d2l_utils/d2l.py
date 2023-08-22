@@ -417,7 +417,7 @@ class MulMLPScratch(Classifier):
         return torch.matmul(H, self.W[-1]) + self.b[-1]
     
     def configure_optimizers(self):
-        return d2l.SGD([*self.W, *self.b], self.lr)
+        return SGD([*self.W, *self.b], self.lr)
     
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
