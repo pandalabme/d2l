@@ -864,3 +864,8 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    5e95316..e895059  main -> main
+[main 5f0cf91] auto
+ 6 files changed, 2229 insertions(+), 1174 deletions(-)
+ create mode 100644 exercises/ch5/submission.csv
+To https://github.com/pandalabme/d2l.git
+   e895059..5f0cf91  main -> main
