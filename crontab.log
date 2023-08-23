@@ -924,3 +924,9 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch6/6_2_5_Exercises_files/6_2_5_Exercises_4_1.svg
 To https://github.com/pandalabme/d2l.git
    a4a1116..29b23cb  main -> main
+[main 03a99d9] auto
+ 3 files changed, 185 insertions(+)
+ create mode 100644 exercises/ch6/.ipynb_checkpoints/6_4_2_Exercises-checkpoint.ipynb
+ create mode 100644 exercises/ch6/6_4_2_Exercises.ipynb
+To https://github.com/pandalabme/d2l.git
+   29b23cb..03a99d9  main -> main
