@@ -879,3 +879,23 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch6/6_1_10_Exercises.ipynb
 To https://github.com/pandalabme/d2l.git
    abaeecc..793d27d  main -> main
+[main 5a48f46] auto
+ 20 files changed, 75314 insertions(+), 3691 deletions(-)
+ create mode 100644 exercises/ch5/.ipynb_checkpoints/5_7_10_Exercises-checkpoint.md
+ create mode 100644 exercises/ch5/5_7_10_Exercises.md
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_11_1.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_12_0.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_13_0.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_14_2.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_15_25.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_16_9.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_17_1.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_18_21.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_22_1.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_2_1.svg
+ create mode 100644 exercises/ch5/5_7_10_Exercises_files/5_7_10_Exercises_7_15.svg
+ rewrite exercises/ch5/submission.csv (98%)
+ rename exercises/ch6/.ipynb_checkpoints/{6_1_10_Exercises-checkpoint.ipynb => 6_1_5_Exercises-checkpoint.ipynb} (100%)
+ rename exercises/ch6/{6_1_10_Exercises.ipynb => 6_1_5_Exercises.ipynb} (100%)
+To https://github.com/pandalabme/d2l.git
+   793d27d..5a48f46  main -> main
