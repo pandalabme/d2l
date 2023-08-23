@@ -305,6 +305,23 @@ class LinearRegression(Module):
         fn = nn.MSELoss(reduction='mean')
         return fn(y_hat, y)
     
+    def training_step(self, batch, plot_flag=True):
+        l = self.loss(self(*batch[:-1]), batch[-1])
+        if plot_flag:
+            self.plot('loss', l, train=True)
+        else:
+            print(f'loss:{l}')
+        return l
+
+    def validation_step(self, batch, plot_flag=True):
+        l = self.loss(self(*batch[:-1]),batch[-1])
+        if plot_flag:
+            self.plot('loss', l, train=False)
+        else:
+            print(f'loss:{l}')
+        return l
+
+    
 
 class Classifier(Module):
     def training_step(self, batch, plot_flag=True):
