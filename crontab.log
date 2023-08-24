@@ -1001,3 +1001,10 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch6/model_parameters.pth
 To https://github.com/pandalabme/d2l.git
    93a1039..cd06435  main -> main
+[main bb98a87] auto
+ 6 files changed, 324 insertions(+), 6 deletions(-)
+ create mode 100644 exercises/ch6/.ipynb_checkpoints/6_6_4_Exercises-checkpoint.md
+ create mode 100644 exercises/ch6/6_6_4_Exercises.md
+ rewrite exercises/ch6/model_architecture.pth (99%)
+To https://github.com/pandalabme/d2l.git
+   cd06435..bb98a87  main -> main
