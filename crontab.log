@@ -1123,3 +1123,8 @@ To https://github.com/pandalabme/d2l.git
  2 files changed, 307 insertions(+), 21 deletions(-)
 To https://github.com/pandalabme/d2l.git
    4fd7348..a0f75d9  main -> main
+[main b0ee7f5] auto
+ 2 files changed, 703 insertions(+), 1393 deletions(-)
+ rewrite exercises/ch7/7_2_8_Exercises.ipynb (72%)
+To https://github.com/pandalabme/d2l.git
+   a0f75d9..b0ee7f5  main -> main
