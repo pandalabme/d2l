@@ -1140,3 +1140,11 @@ To https://github.com/pandalabme/d2l.git
  2 files changed, 139 insertions(+), 212 deletions(-)
 To https://github.com/pandalabme/d2l.git
    72f4bdd..e864930  main -> main
+[main 4992329] auto
+ 7 files changed, 1121 insertions(+), 10 deletions(-)
+ create mode 100644 exercises/ch7/.ipynb_checkpoints/7_2_8_Exercises-checkpoint.md
+ create mode 100644 exercises/ch7/.ipynb_checkpoints/7_3_4_Exercises-checkpoint.ipynb
+ create mode 100644 exercises/ch7/7_2_8_Exercises.md
+ create mode 100644 exercises/ch7/7_3_4_Exercises.ipynb
+To https://github.com/pandalabme/d2l.git
+   e864930..4992329  main -> main
