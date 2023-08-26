@@ -545,3 +545,21 @@ def download(url, folder='../data', sha1_hash=None):
     with open(fname, 'wb') as f:
         f.write(r.content)
     return fname
+
+
+def corr2d(X,K):
+    h,w = K.shape
+    Y = torch.zeros(X.shape[0]-h+1, X.shape[1]-w+1)
+    for i in range(Y.shape[0]):
+        for j in range(Y.shape[1]):
+            Y[i, j] = (X[i:i+h, j:j+w]*K).sum()
+    return Y
+
+def corr2d_matmul(pic, K):
+    pad_K = F.pad(K,(0,pic.shape[1]-K.shape[1],0,pic.shape[0]-K.shape[0])).type(torch.float32)
+    l = []
+    for i in range(pic.shape[0]-K.shape[0]+1):
+        for j in range(pic.shape[1]-K.shape[1]+1):
+            l.append(torch.roll(pad_K,(i,j),(0,1)).reshape(1,-1))
+    print(torch.cat(l,dim=0))
+    return (torch.cat(l,dim=0)@pic.reshape(-1,1)).reshape(pic.shape[0]-K.shape[0]+1,pic.shape[1]-K.shape[1]+1)
