@@ -1253,3 +1253,22 @@ To https://github.com/pandalabme/d2l.git
 fatal: unable to get credential storage lock: File exists
 To https://github.com/pandalabme/d2l.git
    b3cdcd6..48376a0  main -> main
+[main d734c04] auto
+ 19 files changed, 68792 insertions(+), 2902 deletions(-)
+ create mode 100644 exercises/ch7/.ipynb_checkpoints/7_6_4_Exercises-checkpoint.md
+ create mode 100644 exercises/ch7/.ipynb_checkpoints/7_6_4_Exercises_part2-checkpoint.ipynb
+ create mode 100644 exercises/ch7/7_6_4_Exercises.md
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_12_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_12_1.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_12_2.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_13_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_15_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_15_1.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_15_2.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_16_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_18_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_4_1.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_files/7_6_4_Exercises_7_1.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2.ipynb
+To https://github.com/pandalabme/d2l.git
+   48376a0..d734c04  main -> main
