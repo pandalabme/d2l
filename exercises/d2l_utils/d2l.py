@@ -563,3 +563,7 @@ def corr2d_matmul(pic, K):
             l.append(torch.roll(pad_K,(i,j),(0,1)).reshape(1,-1))
     print(torch.cat(l,dim=0))
     return (torch.cat(l,dim=0)@pic.reshape(-1,1)).reshape(pic.shape[0]-K.shape[0]+1,pic.shape[1]-K.shape[1]+1)
+
+def init_cnn(module):
+    if type(module) == nn.Linear or type(module) == nn.Conv2d:
+        nn.init.xavier_uniform_(module.weight)
