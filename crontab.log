@@ -1320,3 +1320,21 @@ To https://github.com/pandalabme/d2l.git
  2 files changed, 3348 insertions(+), 1 deletion(-)
 To https://github.com/pandalabme/d2l.git
    516ca02..f8e00b8  main -> main
+[main a22728e] auto
+ 19 files changed, 49060 insertions(+), 2426 deletions(-)
+ create mode 100644 exercises/ch7/.ipynb_checkpoints/7_6_4_Exercises_part2-checkpoint.md
+ create mode 100644 exercises/ch7/.ipynb_checkpoints/7_6_4_Exercises_part3-checkpoint.ipynb
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2.md
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_2_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_2_1.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_2_2.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_3_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_5_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_5_1.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_5_2.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_5_3.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_6_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part2_files/7_6_4_Exercises_part2_8_0.svg
+ create mode 100644 exercises/ch7/7_6_4_Exercises_part3.ipynb
+To https://github.com/pandalabme/d2l.git
+   f8e00b8..a22728e  main -> main

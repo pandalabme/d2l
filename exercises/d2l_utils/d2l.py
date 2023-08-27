@@ -360,7 +360,7 @@ class Classifier(Module):
 
 class FashionMNIST(DataModule):  #@save
     """The Fashion-MNIST dataset."""
-    def __init__(self, batch_size=64, resize=(28, 28)):
+    def __init__(self, batch_size=64, resize=(28, 28),num_workers=4):
         super().__init__()
         self.save_hyperparameters()
         trans = transforms.Compose([transforms.Resize(resize),
