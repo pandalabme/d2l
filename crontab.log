@@ -1696,3 +1696,9 @@ To https://github.com/pandalabme/d2l.git
  2 files changed, 66 insertions(+), 102 deletions(-)
 To https://github.com/pandalabme/d2l.git
    6ae92f0..de93d3e  main -> main
+[main a42d0bf] auto
+ 3 files changed, 713 insertions(+), 951 deletions(-)
+ copy exercises/ch8/{8_5_7_Exercises.ipynb => .ipynb_checkpoints/8_5_7_Exercises-checkpoint.ipynb} (71%)
+ rewrite exercises/ch8/8_5_7_Exercises.ipynb (70%)
+To https://github.com/pandalabme/d2l.git
+   de93d3e..a42d0bf  main -> main

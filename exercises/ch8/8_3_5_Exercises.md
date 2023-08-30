@@ -8,10 +8,10 @@ import d2l
 from torchsummary import summary
 warnings.filterwarnings("ignore")
 
-def nin_block(out_channels, kernel_size, stride, padding, nums_conv1=2, conv1_size=1):
-    layers = [nn.LazyConv2d(out_channels, kernel_size=kernel_size, stride=stride, padding=padding),nn.ReLU()]
-    for i in range(nums_conv1):
-        layers.append(nn.LazyConv2d(out_channels, kernel_size=conv1_size))
+def nin_block(out_channels, kernel_size, strides, padding, conv1s=[[1,0],[1,0]]):
+    layers = [nn.LazyConv2d(out_channels, kernel_size=kernel_size, stride=strides, padding=padding),nn.ReLU()]
+    for conv1_size,conv1_padding in conv1s:
+        layers.append(nn.LazyConv2d(out_channels, kernel_size=conv1_size,padding=conv1_padding))
         layers.append(nn.ReLU())
     return nn.Sequential(*layers)
 
@@ -33,16 +33,31 @@ class Nin(d2l.Classifier):
 
 
 ```python
-arch = ((96,11,4,0,2),(256,5,1,2,2),(384,3,1,1,2),(10,3,1,1,2))
-model = Nin(arch)
-data = d2l.FashionMNIST(batch_size=128, resize=(28, 28))
+data = d2l.FashionMNIST(batch_size=128, resize=(224, 224))
+arch = ((96,11,4,0),(256,5,1,2),(384,3,1,1),(10,3,1,1))
+model = Nin(arch, lr=0.03)
+model.apply_init([next(iter(data.get_dataloader(True)))[0]], d2l.init_cnn)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# Initialize memory counters
+torch.cuda.reset_peak_memory_stats()
+torch.cuda.empty_cache()
 trainer = d2l.Trainer(max_epochs=10, num_gpus=1)
 trainer.fit(model, data)
+memory_stats = torch.cuda.memory_stats(device=device)
+# Print peak memory usage and other memory statistics
+print("Peak memory usage:", memory_stats["allocated_bytes.all.peak"] / (1024 ** 2), "MB")
+print("Current memory usage:", memory_stats["allocated_bytes.all.current"] / (1024 ** 2), "MB")
 X,y = next(iter(data.get_dataloader(False)))
 X = X.to('cuda')
 y = y.to('cuda')
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+torch.cuda.reset_peak_memory_stats()
+torch.cuda.empty_cache()
 y_hat = model(X) 
 print(f'acc: {model.accuracy(y_hat,y).item():.2f}')
+memory_stats = torch.cuda.memory_stats(device=device)
+print("Peak memory usage:", memory_stats["allocated_bytes.all.peak"] / (1024 ** 2), "MB")
+print("Current memory usage:", memory_stats["allocated_bytes.all.current"] / (1024 ** 2), "MB")
 ```
 
 
@@ -126,8 +141,10 @@ print(f'acc: {model.accuracy(y_hat,y).item():.2f}')
 
 
 ```python
-arch = ((96,11,4,0,1),(256,5,1,2,1),(384,3,1,1,1),(10,3,1,1,1))
-model = Nin(arch)
+data = d2l.FashionMNIST(batch_size=128, resize=(224, 224))
+arch = ((96,11,4,0,[[1,0]]),(256,5,1,2,[[1,0]]),(384,3,1,1,[[1,0]]),(10,3,1,1,[[1,0]]))
+model = Nin(arch, lr=0.05)
+model.apply_init([next(iter(data.get_dataloader(True)))[0]], d2l.init_cnn)
 trainer = d2l.Trainer(max_epochs=10, num_gpus=1)
 trainer.fit(model, data)
 X,y = next(iter(data.get_dataloader(False)))
@@ -141,8 +158,9 @@ print(f'acc: {model.accuracy(y_hat,y).item():.2f}')
 
 
 ```python
-arch = ((96,11,4,0,2,3),(256,5,1,2,2,3),(384,3,1,1,2,3),(10,3,1,1,2,3))
+arch = ((96,11,4,0,[[3,1],[3,1]]),(256,5,1,2,[[3,1],[3,1]]),(384,3,1,1,[[3,1],[3,1]]),(10,3,1,1,[[3,1],[3,1]]))
 model = Nin(arch)
+model.apply_init([next(iter(data.get_dataloader(True)))[0]], d2l.init_cnn)
 trainer = d2l.Trainer(max_epochs=10, num_gpus=1)
 trainer.fit(model, data)
 X,y = next(iter(data.get_dataloader(False)))
@@ -258,31 +276,6 @@ To mitigate these problems, it's common to use intermediate layers with smaller 
 
 
 ```python
-def nin_block(out_channels, kernel_size, stride, padding, nums_conv1=2, conv1_size=1):
-    layers = [nn.LazyConv2d(out_channels, kernel_size=kernel_size, stride=stride, padding=padding),nn.ReLU()]
-    for i in range(nums_conv1):
-        layers.append(nn.LazyConv2d(out_channels, kernel_size=conv1_size))
-        layers.append(nn.ReLU())
-    return nn.Sequential(*layers)
-
-class Nin(d2l.Classifier):
-    def __init__(self, arch, lr=0.1):
-        super().__init__()
-        self.save_hyperparameters()
-        layers = []
-        for i in range(len(arch)-1):
-            layers.append(nin_block(*arch[i]))
-            layers.append(nn.MaxPool2d(3, stride=2))
-        layers.append(nn.Dropout(0.5))
-        layers.append(nin_block(*arch[-1]))
-        layers.append(nn.AdaptiveAvgPool2d((1, 1)))
-        layers.append(nn.Flatten())
-        self.net = nn.Sequential(*layers)
-        self.net.apply(d2l.init_cnn)
-```
-
-
-```python
 arch = ((96,11,4,0,2),(256,5,1,2,2),(384,3,1,1,2),(10,3,1,1,2))
 nin = Nin(arch)
 nin
@@ -338,13 +331,13 @@ nin
 
 
 ```python
-arch11 = ((64,3,1,1),(128,3,1,1),
-          (256,3,1,1),(256,3,1,1),
-          (512,3,1,1),(512,3,1,1),
-          (512,3,1,1),(512,3,1,1),
+arch15 = ((64,3,2,1),
+          (256,3,1,1),
+          (256,3,1,1),
+          (384,3,1,1),
           (10,3,1,1))
-nin11 = Nin(arch11)
-nin11
+nin15 = Nin(arch11)
+nin15
 ```
 
 
@@ -353,7 +346,7 @@ nin11
     Nin(
       (net): Sequential(
         (0): Sequential(
-          (0): LazyConv2d(0, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (0): LazyConv2d(0, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
           (1): ReLU()
           (2): LazyConv2d(0, 64, kernel_size=(1, 1), stride=(1, 1))
           (3): ReLU()
@@ -362,11 +355,11 @@ nin11
         )
         (1): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
         (2): Sequential(
-          (0): LazyConv2d(0, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (0): LazyConv2d(0, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
           (1): ReLU()
-          (2): LazyConv2d(0, 128, kernel_size=(1, 1), stride=(1, 1))
+          (2): LazyConv2d(0, 256, kernel_size=(1, 1), stride=(1, 1))
           (3): ReLU()
-          (4): LazyConv2d(0, 128, kernel_size=(1, 1), stride=(1, 1))
+          (4): LazyConv2d(0, 256, kernel_size=(1, 1), stride=(1, 1))
           (5): ReLU()
         )
         (3): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
@@ -380,52 +373,16 @@ nin11
         )
         (5): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
         (6): Sequential(
-          (0): LazyConv2d(0, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (0): LazyConv2d(0, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
           (1): ReLU()
-          (2): LazyConv2d(0, 256, kernel_size=(1, 1), stride=(1, 1))
+          (2): LazyConv2d(0, 384, kernel_size=(1, 1), stride=(1, 1))
           (3): ReLU()
-          (4): LazyConv2d(0, 256, kernel_size=(1, 1), stride=(1, 1))
+          (4): LazyConv2d(0, 384, kernel_size=(1, 1), stride=(1, 1))
           (5): ReLU()
         )
         (7): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
-        (8): Sequential(
-          (0): LazyConv2d(0, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-          (1): ReLU()
-          (2): LazyConv2d(0, 512, kernel_size=(1, 1), stride=(1, 1))
-          (3): ReLU()
-          (4): LazyConv2d(0, 512, kernel_size=(1, 1), stride=(1, 1))
-          (5): ReLU()
-        )
-        (9): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
-        (10): Sequential(
-          (0): LazyConv2d(0, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-          (1): ReLU()
-          (2): LazyConv2d(0, 512, kernel_size=(1, 1), stride=(1, 1))
-          (3): ReLU()
-          (4): LazyConv2d(0, 512, kernel_size=(1, 1), stride=(1, 1))
-          (5): ReLU()
-        )
-        (11): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
-        (12): Sequential(
-          (0): LazyConv2d(0, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-          (1): ReLU()
-          (2): LazyConv2d(0, 512, kernel_size=(1, 1), stride=(1, 1))
-          (3): ReLU()
-          (4): LazyConv2d(0, 512, kernel_size=(1, 1), stride=(1, 1))
-          (5): ReLU()
-        )
-        (13): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
-        (14): Sequential(
-          (0): LazyConv2d(0, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-          (1): ReLU()
-          (2): LazyConv2d(0, 512, kernel_size=(1, 1), stride=(1, 1))
-          (3): ReLU()
-          (4): LazyConv2d(0, 512, kernel_size=(1, 1), stride=(1, 1))
-          (5): ReLU()
-        )
-        (15): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
-        (16): Dropout(p=0.5, inplace=False)
-        (17): Sequential(
+        (8): Dropout(p=0.5, inplace=False)
+        (9): Sequential(
           (0): LazyConv2d(0, 10, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
           (1): ReLU()
           (2): LazyConv2d(0, 10, kernel_size=(1, 1), stride=(1, 1))
@@ -433,8 +390,8 @@ nin11
           (4): LazyConv2d(0, 10, kernel_size=(1, 1), stride=(1, 1))
           (5): ReLU()
         )
-        (18): AdaptiveAvgPool2d(output_size=(1, 1))
-        (19): Flatten(start_dim=1, end_dim=-1)
+        (10): AdaptiveAvgPool2d(output_size=(1, 1))
+        (11): Flatten(start_dim=1, end_dim=-1)
       )
     )
 
