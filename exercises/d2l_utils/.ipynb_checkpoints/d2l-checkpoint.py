@@ -442,6 +442,54 @@ class MulMLPScratch(Classifier):
     def configure_optimizers(self):
         return SGD([*self.W, *self.b], self.lr)
     
+    
+class Residual(nn.Module):
+    def __init__(self, convs, conv_1x1_channel, strides=1):
+        super().__init__()
+        layers = []
+        for i,conv in enumerate(convs):
+            num_channels, kernel_size, padding = conv
+            conv_strides = 1 if i != 0 else strides
+            layers.append(nn.LazyConv2d(num_channels, kernel_size=3, padding=1, stride=conv_strides))
+            layers.append(nn.LazyBatchNorm2d())
+            layers.append(nn.ReLU())
+        self.net = nn.Sequential(*layers[:-1])
+        self.conv = None
+        if conv_1x1_channel:
+            self.conv = nn.LazyConv2d(conv_1x1_channel, kernel_size=1, stride=strides)
+        
+        
+    def forward(self, X):
+        Y = self.net(X)
+        if self.conv:
+            X = self.conv(X)
+        Y += X
+        return F.relu(Y)
+        
+class ResNet(Classifier):
+    def block(self, num_residuals, convs, conv_1x1_channel, first_block=False):
+        blk = []
+        for i in range(num_residuals):
+            if i == 0 and not first_block:
+                blk.append(Residual(convs, conv_1x1_channel,strides=2))
+            else:
+                blk.append(Residual(convs, conv_1x1_channel))
+        return nn.Sequential(*blk)
+    
+    def __init__(self, arch, lr=0.1, num_classes=10):
+        super().__init__()
+        self.save_hyperparameters()
+        self.net = nn.Sequential(
+            nn.LazyConv2d(64, kernel_size=7, stride=2, padding=3),
+            nn.LazyBatchNorm2d(), nn.ReLU(),
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
+        for i, b in enumerate(arch):
+            self.net.add_module(f'b{i+2}', self.block(*b, first_block=(i==0)))
+        self.net.add_module('last', nn.Sequential(
+            nn.AdaptiveAvgPool2d((1, 1)), nn.Flatten(),
+            nn.LazyLinear(num_classes)))
+        self.net.apply(init_cnn)
+    
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
 
