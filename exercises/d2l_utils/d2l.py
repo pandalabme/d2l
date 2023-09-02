@@ -295,7 +295,7 @@ class LinearRegression(Module):
         super().__init__()
         self.save_hyperparameters()
         self.net = nn.LazyLinear(1)
-        self.net.weight.data.normal_(0, 0.01)
+        self.net.weight.data.normal_(0, 1)
         self.net.bias.data.fill_(0)
         
     def forward(self, X):
@@ -320,6 +320,10 @@ class LinearRegression(Module):
         else:
             print(f'loss:{l}')
         return l
+    
+    def configure_optimizers(self):
+        # return torch.optim.SGD(self.parameters(), lr=self.lr)
+        return torch.optim.Adam(self.parameters(), lr=self.lr)
 
     
 
