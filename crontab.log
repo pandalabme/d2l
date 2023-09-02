@@ -2018,3 +2018,11 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch9/Untitled.ipynb
 To https://github.com/pandalabme/d2l.git
    3d9a570..50186aa  main -> main
+[main e30e90b] auto
+ 5 files changed, 4155 insertions(+), 51 deletions(-)
+ rename exercises/ch9/.ipynb_checkpoints/{Untitled-checkpoint.ipynb => 9_2_7_Exercises-checkpoint.ipynb} (100%)
+ create mode 100644 exercises/ch9/9_2_7_Exercises.ipynb
+ delete mode 100644 exercises/ch9/Untitled.ipynb
+ create mode 100644 exercises/data/timemachine.txt
+To https://github.com/pandalabme/d2l.git
+   50186aa..e30e90b  main -> main
