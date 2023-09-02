@@ -2046,3 +2046,25 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch9/Untitled.ipynb
 To https://github.com/pandalabme/d2l.git
    11ba8d9..5b9d5ba  main -> main
+[main de3ef26] auto
+ 19 files changed, 1136338 insertions(+), 2 deletions(-)
+ create mode 100644 exercises/ch9/.ipynb_checkpoints/9_2_7_Exercises-checkpoint.md
+ rename exercises/ch9/.ipynb_checkpoints/{Untitled-checkpoint.ipynb => 9_3_7_Exercises-checkpoint.ipynb} (100%)
+ create mode 100644 exercises/ch9/9_2_7_Exercises.md
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_11_0.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_11_1.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_12_0.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_12_1.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_3_0.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_7_0.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_7_1.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_8_0.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_8_1.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_9_0.svg
+ create mode 100644 exercises/ch9/9_2_7_Exercises_files/9_2_7_Exercises_9_1.svg
+ rename exercises/ch9/{Untitled.ipynb => 9_3_7_Exercises.ipynb} (100%)
+remote: warning: See https://gh.io/lfs for more information.        
+remote: warning: File exercises/ch9/9_2_7_Exercises.ipynb is 65.79 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        
+remote: warning: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To https://github.com/pandalabme/d2l.git
+   5b9d5ba..de3ef26  main -> main
