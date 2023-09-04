@@ -12,6 +12,7 @@ from sklearn.metrics import roc_auc_score
 import os
 import requests
 import hashlib
+import re
 
 DATA_HUB = dict()
 DATA_URL = 'http://d2l-data.s3-accelerate.amazonaws.com/'
@@ -542,6 +543,21 @@ class TimeMachine(DataModule): #@save
         if vocab is None: vocab = Vocab(tokens)
         corpus = [vocab[token] for token in tokens]
         return corpus, vocab
+    
+    def __init__(self, batch_size, num_steps, num_train=10000, num_val=5000):
+        """Defined in :numref:`sec_language-model`"""
+        super().__init__()
+        self.save_hyperparameters()
+        corpus, self.vocab = self.build(self._download())
+        array = torch.tensor([corpus[i:i+num_steps+1]
+                            for i in range(len(corpus)-num_steps)])
+        self.X, self.Y = array[:,:-1], array[:,1:]
+        
+    def get_dataloader(self, train):
+        """Defined in :numref:`subsec_partitioning-seqs`"""
+        idx = slice(0, self.num_train) if train else slice(
+            self.num_train, self.num_train + self.num_val)
+        return self.get_tensorloader([self.X, self.Y], train, idx)
     
 class Vocab:
     """Vocabulary for text."""
