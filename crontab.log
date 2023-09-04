@@ -2234,3 +2234,9 @@ To https://github.com/pandalabme/d2l.git
  6 files changed, 38402 insertions(+), 30 deletions(-)
 To https://github.com/pandalabme/d2l.git
    9e852e5..a2d98c5  main -> main
+[main d40c417] auto
+ 4 files changed, 46003 insertions(+), 38373 deletions(-)
+ rewrite exercises/ch9/9_5_7_Exercises.ipynb (92%)
+ create mode 100644 exercises/data/.ipynb_checkpoints/timemachine-checkpoint.txt
+To https://github.com/pandalabme/d2l.git
+   a2d98c5..d40c417  main -> main
