@@ -2292,3 +2292,9 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 20 insertions(+)
 To https://github.com/pandalabme/d2l.git
    aeaeaa3..f07ba9c  main -> main
+[main aa82a67] auto
+ 3 files changed, 103 insertions(+)
+ create mode 100644 exercises/ch9/.ipynb_checkpoints/9_7_4_Exercises-checkpoint.ipynb
+ create mode 100644 exercises/ch9/9_7_4_Exercises.ipynb
+To https://github.com/pandalabme/d2l.git
+   f07ba9c..aa82a67  main -> main
