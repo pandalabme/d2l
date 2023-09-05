@@ -682,7 +682,7 @@ class RNNScratch(Module):
             torch.randn(num_inputs, num_hiddens) * sigma)
         self.W_hh = nn.Parameter(
             torch.randn(num_hiddens, num_hiddens) * sigma)
-        self.b_h = nn.Parameter(d2l.zeros(num_hiddens))
+        self.b_h = nn.Parameter(torch.zeros(num_hiddens))
 
     def forward(self, inputs, state=None):
         """Defined in :numref:`sec_rnn-scratch`"""
