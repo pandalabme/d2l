@@ -326,7 +326,6 @@ class LinearRegression(Module):
         # return torch.optim.SGD(self.parameters(), lr=self.lr)
         return torch.optim.Adam(self.parameters(), lr=self.lr)
 
-    
 
 class Classifier(Module):
     def training_step(self, batch, plot_flag=True):
@@ -671,6 +670,35 @@ class RNNLM(RNNLMScratch):
 
     def output_layer(self, hiddens):
         return torch.swapaxes(self.linear(hiddens), 0, 1)
+    
+class RNNScratch(Module):
+    """The RNN model implemented from scratch.
+
+    Defined in :numref:`sec_rnn-scratch`"""
+    def __init__(self, num_inputs, num_hiddens, sigma=0.01):
+        super().__init__()
+        self.save_hyperparameters()
+        self.W_xh = nn.Parameter(
+            torch.randn(num_inputs, num_hiddens) * sigma)
+        self.W_hh = nn.Parameter(
+            torch.randn(num_hiddens, num_hiddens) * sigma)
+        self.b_h = nn.Parameter(d2l.zeros(num_hiddens))
+
+    def forward(self, inputs, state=None):
+        """Defined in :numref:`sec_rnn-scratch`"""
+        if state is None:
+            # Initial state with shape: (batch_size, num_hiddens)
+            state = torch.zeros((inputs.shape[1], self.num_hiddens),
+                              device=inputs.device)
+        else:
+            state, = state
+        outputs = []
+        for X in inputs:  # Shape of inputs: (num_steps, batch_size, num_inputs)
+            state = torch.tanh(torch.matmul(X, self.W_xh) +
+                             torch.matmul(state, self.W_hh) + self.b_h)
+            outputs.append(state)
+        return outputs, state
+
     
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
