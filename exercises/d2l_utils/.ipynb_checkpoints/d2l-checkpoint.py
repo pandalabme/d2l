@@ -591,6 +591,85 @@ class Vocab:
     def unk(self):  # Index for the unknown token
         return self.token_to_idx['<unk>']
     
+
+class RNNLMScratch(Classifier):
+    """The RNN-based language model implemented from scratch.
+
+    Defined in :numref:`sec_rnn-scratch`"""
+    def __init__(self, rnn, vocab_size, lr=0.01):
+        super().__init__()
+        self.save_hyperparameters()
+        self.init_params()
+
+    def init_params(self):
+        self.W_hq = nn.Parameter(
+            torch.randn(
+                self.rnn.num_hiddens, self.vocab_size) * self.rnn.sigma)
+        self.b_q = nn.Parameter(torch.zeros(self.vocab_size))
+
+    def training_step(self, batch, plot_flag=True):
+        l = self.loss(self(*batch[:-1]), batch[-1])
+        if plot_flag:
+            self.plot('ppl', torch.exp(l), train=True)
+        return l
+
+    def validation_step(self, batch, plot_flag=True):
+        l = self.loss(self(*batch[:-1]), batch[-1])
+        if plot_flag:
+            self.plot('ppl', torch.exp(l), train=False)
+
+    def one_hot(self, X):
+        """Defined in :numref:`sec_rnn-scratch`"""
+        # Output shape: (num_steps, batch_size, vocab_size)
+        return F.one_hot(X.T, self.vocab_size).type(torch.float32)
+
+    def output_layer(self, rnn_outputs):
+        """Defined in :numref:`sec_rnn-scratch`"""
+        outputs = [torch.matmul(H, self.W_hq) + self.b_q for H in rnn_outputs]
+        return torch.stack(outputs, 1)
+    
+
+    def forward(self, X, state=None):
+        """Defined in :numref:`sec_rnn-scratch`"""
+        embs = self.one_hot(X)
+        rnn_outputs, _ = self.rnn(embs, state)
+        return self.output_layer(rnn_outputs)
+
+    def predict(self, prefix, num_preds, vocab, device=None):
+        """Defined in :numref:`sec_rnn-scratch`"""
+        state, outputs = None, [vocab[prefix[0]]]
+        for i in range(len(prefix) + num_preds - 1):
+            X = torch.tensor([[outputs[-1]]], device=device)
+            embs = self.one_hot(X)
+            rnn_outputs, state = self.rnn(embs, state)
+            if i < len(prefix) - 1:  # Warm-up period
+                outputs.append(vocab[prefix[i + 1]])
+            else:  # Predict num_preds steps
+                Y = self.output_layer(rnn_outputs)
+                outputs.append(int(torch.reshape(torch.argmax(Y, axis=2), 1)))
+        return ''.join([vocab.idx_to_token[i] for i in outputs])
+    
+class RNN(Module):
+    """The RNN model implemented with high-level APIs.
+
+    Defined in :numref:`sec_rnn-concise`"""
+    def __init__(self, num_inputs, num_hiddens):
+        super().__init__()
+        self.save_hyperparameters()
+        self.rnn = nn.RNN(num_inputs, num_hiddens)
+
+    def forward(self, inputs, H=None):
+        return self.rnn(inputs, H)
+    
+class RNNLM(RNNLMScratch):
+    """The RNN-based language model implemented with high-level APIs.
+
+    Defined in :numref:`sec_rnn-concise`"""
+    def init_params(self):
+        self.linear = nn.LazyLinear(self.vocab_size)
+
+    def output_layer(self, hiddens):
+        return torch.swapaxes(self.linear(hiddens), 0, 1)
     
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
