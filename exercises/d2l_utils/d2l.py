@@ -617,6 +617,7 @@ class RNNLMScratch(Classifier):
         l = self.loss(self(*batch[:-1]), batch[-1])
         if plot_flag:
             self.plot('ppl', torch.exp(l), train=False)
+        return l
 
     def one_hot(self, X):
         """Defined in :numref:`sec_rnn-scratch`"""
