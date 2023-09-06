@@ -650,8 +650,7 @@ class RNNLMScratch(Classifier):
                 outputs.append(vocab[prefix[i + 1]])
             else:  # Predict num_preds steps
                 Y = self.output_layer(rnn_outputs)
-                print(torch.argmax(Y, axis=2))
-                outputs.append(int(torch.reshape(torch.argmax(Y, axis=2), 1)))
+                outputs.append(int(torch.argmax(Y, axis=2).reshape(1)))
         return ''.join([vocab.idx_to_token[i] for i in outputs])
     
 class RNN(Module):
