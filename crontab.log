@@ -2488,3 +2488,13 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/data/fra-eng/fra.txt
 To https://github.com/pandalabme/d2l.git
    27a25da..e7af403  main -> main
+[main 10c6d9c] auto
+ 11 files changed, 2298 insertions(+), 156 deletions(-)
+ create mode 100644 exercises/ch10/.ipynb_checkpoints/10_5_6_Exercises-checkpoint.md
+ create mode 100644 exercises/ch10/.ipynb_checkpoints/10_6_5_Exercises-checkpoint.ipynb
+ rewrite exercises/ch10/10_5_6_Exercises.ipynb (64%)
+ create mode 100644 exercises/ch10/10_5_6_Exercises.md
+ create mode 100644 exercises/ch10/10_5_6_Exercises_files/10_5_6_Exercises_2_0.svg
+ create mode 100644 exercises/ch10/10_6_5_Exercises.ipynb
+To https://github.com/pandalabme/d2l.git
+   e7af403..10c6d9c  main -> main
