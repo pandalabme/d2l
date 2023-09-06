@@ -2515,3 +2515,11 @@ To https://github.com/pandalabme/d2l.git
  rewrite exercises/ch10/10_7_10_Exercises.ipynb (76%)
 To https://github.com/pandalabme/d2l.git
    9eac77a..725cc63  main -> main
+[main cb8156b] auto
+ 5 files changed, 15825 insertions(+), 22089 deletions(-)
+ rewrite exercises/ch10/.ipynb_checkpoints/10_7_10_Exercises-checkpoint.ipynb (87%)
+ create mode 100644 exercises/ch10/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+ rewrite exercises/ch10/10_7_10_Exercises.ipynb (76%)
+ create mode 100644 exercises/ch10/Untitled.ipynb
+To https://github.com/pandalabme/d2l.git
+   725cc63..cb8156b  main -> main
