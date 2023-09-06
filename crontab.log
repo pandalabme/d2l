@@ -2510,3 +2510,8 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch10/10_7_10_Exercises.ipynb
 To https://github.com/pandalabme/d2l.git
    0beadcd..9eac77a  main -> main
+[main 725cc63] auto
+ 2 files changed, 11683 insertions(+), 11310 deletions(-)
+ rewrite exercises/ch10/10_7_10_Exercises.ipynb (76%)
+To https://github.com/pandalabme/d2l.git
+   9eac77a..725cc63  main -> main
