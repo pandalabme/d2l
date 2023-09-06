@@ -13,6 +13,7 @@ import os
 import requests
 import hashlib
 import re
+import zipfile
 
 DATA_HUB = dict()
 DATA_URL = 'http://d2l-data.s3-accelerate.amazonaws.com/'
@@ -825,3 +826,18 @@ def corr2d_matmul(pic, K):
 def init_cnn(module):
     if type(module) == nn.Linear or type(module) == nn.Conv2d:
         nn.init.xavier_uniform_(module.weight)
+        
+def extract(filename, folder=None):
+    """Extract a zip/tar file into folder.
+
+    Defined in :numref:`sec_utils`"""
+    base_dir = os.path.dirname(filename)
+    _, ext = os.path.splitext(filename)
+    assert ext in ('.zip', '.tar', '.gz'), 'Only support zip/tar files.'
+    if ext == '.zip':
+        fp = zipfile.ZipFile(filename, 'r')
+    else:
+        fp = tarfile.open(filename, 'r')
+    if folder is None:
+        folder = base_dir
+    fp.extractall(folder)
