@@ -2929,3 +2929,9 @@ To https://github.com/pandalabme/d2l.git
  rewrite exercises/ch11/Untitled.ipynb (63%)
 To https://github.com/pandalabme/d2l.git
    88eae62..732c36e  main -> main
+[main 09dc0ba] auto
+ 7 files changed, 885 insertions(+), 40 deletions(-)
+ rename exercises/ch11/.ipynb_checkpoints/{Untitled-checkpoint.ipynb => 11_4_5_Exercises-checkpoint.ipynb} (100%)
+ rename exercises/ch11/{Untitled.ipynb => 11_4_5_Exercises.ipynb} (69%)
+To https://github.com/pandalabme/d2l.git
+   732c36e..09dc0ba  main -> main

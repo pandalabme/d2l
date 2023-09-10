@@ -737,6 +737,7 @@ class EncoderDecoder(Classifier):
     def forward(self, enc_X, dec_X, *args):
         enc_all_outputs = self.encoder(enc_X, *args)
         dec_state = self.decoder.init_state(enc_all_outputs, *args)
+        print(dec_X.shape,len(dec_state))
         # Return decoder output only
         return self.decoder(dec_X, dec_state)[0]
 
