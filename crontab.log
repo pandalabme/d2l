@@ -2924,3 +2924,8 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch11/Untitled.ipynb
 To https://github.com/pandalabme/d2l.git
    1aa877a..88eae62  main -> main
+[main 732c36e] auto
+ 6 files changed, 1007 insertions(+), 198 deletions(-)
+ rewrite exercises/ch11/Untitled.ipynb (63%)
+To https://github.com/pandalabme/d2l.git
+   88eae62..732c36e  main -> main

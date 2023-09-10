@@ -870,9 +870,12 @@ class Seq2Seq(EncoderDecoder):
         super().__init__(encoder, decoder)
         self.save_hyperparameters()
 
-    def validation_step(self, batch):
+    def validation_step(self, batch, plot_flag=True):
         Y_hat = self(*batch[:-1])
-        self.plot('loss', self.loss(Y_hat, batch[-1]), train=False)
+        l = self.loss(Y_hat, batch[-1])
+        if plot_flag:
+            self.plot('loss', l, train=False)
+        return l
 
     def configure_optimizers(self):
         # Adam optimizer is used here
