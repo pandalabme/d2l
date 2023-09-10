@@ -2901,3 +2901,8 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    5469ed6..2a15ab7  main -> main
+[main 03d7efb] auto
+ 1 file changed, 4 insertions(+)
+fatal: unable to get credential storage lock: File exists
+To https://github.com/pandalabme/d2l.git
+   2a15ab7..03d7efb  main -> main
