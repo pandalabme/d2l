@@ -2918,3 +2918,9 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch11/11_3_6_Exercises.md
 To https://github.com/pandalabme/d2l.git
    2cece8b..1aa877a  main -> main
+[main 88eae62] auto
+ 7 files changed, 482 insertions(+), 4 deletions(-)
+ create mode 100644 exercises/ch11/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+ create mode 100644 exercises/ch11/Untitled.ipynb
+To https://github.com/pandalabme/d2l.git
+   1aa877a..88eae62  main -> main
