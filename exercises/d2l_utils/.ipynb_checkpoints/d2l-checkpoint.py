@@ -725,8 +725,10 @@ class Decoder(nn.Module):  #@save
     def forward(self, X, state):
         raise NotImplementedError
         
-class EncoderDecoder(Classifier):  #@save
-    """The base class for the encoder--decoder architecture."""
+class EncoderDecoder(Classifier):
+    """The base class for the encoder--decoder architecture.
+
+    Defined in :numref:`sec_encoder-decoder`"""
     def __init__(self, encoder, decoder):
         super().__init__()
         self.encoder = encoder
@@ -737,6 +739,23 @@ class EncoderDecoder(Classifier):  #@save
         dec_state = self.decoder.init_state(enc_all_outputs, *args)
         # Return decoder output only
         return self.decoder(dec_X, dec_state)[0]
+
+    def predict_step(self, batch, device, num_steps,
+                     save_attention_weights=False):
+        """Defined in :numref:`sec_seq2seq_training`"""
+        batch = [a.to(device) for a in batch]
+        src, tgt, src_valid_len, _ = batch
+        enc_all_outputs = self.encoder(src, src_valid_len)
+        dec_state = self.decoder.init_state(enc_all_outputs, src_valid_len)
+        outputs, attention_weights = [torch.unsqueeze(tgt[:, 0], 1), ], []
+        for _ in range(num_steps):
+            Y, dec_state = self.decoder(outputs[-1], dec_state)
+            outputs.append(torch.argmax(Y, 2))
+            # Save attention weights (to be covered later)
+            if save_attention_weights:
+                attention_weights.append(self.decoder.attention_weights)
+        return torch.cat(outputs[1:], 1), attention_weights
+
     
 class MTFraEng(DataModule):
     """The English-French dataset.
@@ -823,6 +842,120 @@ class GRU(RNN):
         self.rnn = nn.GRU(num_inputs, num_hiddens, num_layers,
                           dropout=dropout)
     
+class Seq2SeqEncoder(Encoder):
+    """The RNN encoder for sequence-to-sequence learning.
+
+    Defined in :numref:`sec_seq2seq`"""
+    def __init__(self, vocab_size, embed_size, num_hiddens, num_layers,
+                 dropout=0):
+        super().__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_size)
+        self.rnn = GRU(embed_size, num_hiddens, num_layers, dropout)
+        self.apply(init_seq2seq)
+
+    def forward(self, X, *args):
+        # X shape: (batch_size, num_steps)
+        embs = self.embedding(X.T.type(torch.int64))
+        # embs shape: (num_steps, batch_size, embed_size)
+        outputs, state = self.rnn(embs)
+        # outputs shape: (num_steps, batch_size, num_hiddens)
+        # state shape: (num_layers, batch_size, num_hiddens)
+        return outputs, state
+
+class Seq2Seq(EncoderDecoder):
+    """The RNN encoder--decoder for sequence to sequence learning.
+
+    Defined in :numref:`sec_seq2seq_decoder`"""
+    def __init__(self, encoder, decoder, tgt_pad, lr):
+        super().__init__(encoder, decoder)
+        self.save_hyperparameters()
+
+    def validation_step(self, batch):
+        Y_hat = self(*batch[:-1])
+        self.plot('loss', self.loss(Y_hat, batch[-1]), train=False)
+
+    def configure_optimizers(self):
+        # Adam optimizer is used here
+        return torch.optim.Adam(self.parameters(), lr=self.lr)
+    
+class AdditiveAttention(nn.Module):
+    """Additive attention.
+
+    Defined in :numref:`subsec_batch_dot`"""
+    def __init__(self, num_hiddens, dropout, **kwargs):
+        super(AdditiveAttention, self).__init__(**kwargs)
+        self.W_k = nn.LazyLinear(num_hiddens, bias=False)
+        self.W_q = nn.LazyLinear(num_hiddens, bias=False)
+        self.w_v = nn.LazyLinear(1, bias=False)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, queries, keys, values, valid_lens):
+        queries, keys = self.W_q(queries), self.W_k(keys)
+        # After dimension expansion, shape of queries: (batch_size, no. of
+        # queries, 1, num_hiddens) and shape of keys: (batch_size, 1, no. of
+        # key-value pairs, num_hiddens). Sum them up with broadcasting
+        features = queries.unsqueeze(2) + keys.unsqueeze(1)
+        features = torch.tanh(features)
+        # There is only one output of self.w_v, so we remove the last
+        # one-dimensional entry from the shape. Shape of scores: (batch_size,
+        # no. of queries, no. of key-value pairs)
+        scores = self.w_v(features).squeeze(-1)
+        self.attention_weights = masked_softmax(scores, valid_lens)
+        # Shape of values: (batch_size, no. of key-value pairs, value
+        # dimension)
+        return torch.bmm(self.dropout(self.attention_weights), values)    
+
+
+def bleu(pred_seq, label_seq, k):
+    """Compute the BLEU.
+
+    Defined in :numref:`sec_seq2seq_training`"""
+    pred_tokens, label_tokens = pred_seq.split(' '), label_seq.split(' ')
+    len_pred, len_label = len(pred_tokens), len(label_tokens)
+    score = math.exp(min(0, 1 - len_label / len_pred))
+    for n in range(1, min(k, len_pred) + 1):
+        num_matches, label_subs = 0, collections.defaultdict(int)
+        for i in range(len_label - n + 1):
+            label_subs[' '.join(label_tokens[i: i + n])] += 1
+        for i in range(len_pred - n + 1):
+            if label_subs[' '.join(pred_tokens[i: i + n])] > 0:
+                num_matches += 1
+                label_subs[' '.join(pred_tokens[i: i + n])] -= 1
+        score *= math.pow(num_matches / (len_pred - n + 1), math.pow(0.5, n))
+    return score    
+
+def show_heatmaps(matrices, xlabel, ylabel, titles=None, figsize=(2.5, 2.5),
+                  cmap='Reds'):
+    """Show heatmaps of matrices.
+
+    Defined in :numref:`sec_queries-keys-values`"""
+    use_svg_display()
+    num_rows, num_cols, _, _ = matrices.shape
+    fig, axes = plt.subplots(num_rows, num_cols, figsize=figsize,
+                                 sharex=True, sharey=True, squeeze=False)
+    for i, (row_axes, row_matrices) in enumerate(zip(axes, matrices)):
+        for j, (ax, matrix) in enumerate(zip(row_axes, row_matrices)):
+            pcm = ax.imshow(matrix.detach().numpy(), cmap=cmap)
+            if i == num_rows - 1:
+                ax.set_xlabel(xlabel)
+            if j == 0:
+                ax.set_ylabel(ylabel)
+            if titles:
+                ax.set_title(titles[j])
+    fig.colorbar(pcm, ax=axes, shrink=0.6);
+
+    
+def init_seq2seq(module):
+    """Initialize weights for sequence-to-sequence learning.
+
+    Defined in :numref:`sec_seq2seq`"""
+    if type(module) == nn.Linear:
+         nn.init.xavier_uniform_(module.weight)
+    if type(module) == nn.GRU:
+        for param in module._flat_weights_names:
+            if "weight" in param:
+                nn.init.xavier_uniform_(module._parameters[param])
+
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
 
