@@ -3065,3 +3065,14 @@ To https://github.com/pandalabme/d2l.git
  delete mode 100644 exercises/ch11/Untitled.ipynb
 To https://github.com/pandalabme/d2l.git
    3fe1ff1..ee2aff4  main -> main
+[main e4f412e] auto
+ 10 files changed, 42546 insertions(+), 208 deletions(-)
+ create mode 100644 exercises/ch11/.ipynb_checkpoints/11_7_8_Exercises-checkpoint.md
+ create mode 100644 exercises/ch11/11_7_8_Exercises.md
+ create mode 100644 exercises/ch11/11_7_8_Exercises_files/11_7_8_Exercises_2_0.svg
+ create mode 100644 exercises/ch11/11_7_8_Exercises_files/11_7_8_Exercises_2_1.svg
+ create mode 100644 exercises/ch11/11_7_8_Exercises_files/11_7_8_Exercises_2_2.svg
+ create mode 100644 exercises/ch11/11_7_8_Exercises_files/11_7_8_Exercises_3_0.svg
+ create mode 100644 exercises/ch11/11_7_8_Exercises_files/11_7_8_Exercises_4_0.svg
+To https://github.com/pandalabme/d2l.git
+   ee2aff4..e4f412e  main -> main
