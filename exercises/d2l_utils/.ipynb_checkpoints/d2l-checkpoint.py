@@ -990,6 +990,36 @@ class MultiHeadAttention(Module):
         X = X.reshape(-1, self.num_heads, X.shape[1], X.shape[2])
         X = X.permute(0, 2, 1, 3)
         return X.reshape(X.shape[0], X.shape[1], -1)
+    
+class AttentionDecoder(Decoder):
+    """The base attention-based decoder interface.
+
+    Defined in :numref:`sec_seq2seq_attention`"""
+    def __init__(self):
+        super().__init__()
+
+    @property
+    def attention_weights(self):
+        raise NotImplementedError
+        
+class PositionalEncoding(nn.Module):
+    """Positional encoding.
+
+    Defined in :numref:`sec_self-attention-and-positional-encoding`"""
+    def __init__(self, num_hiddens, dropout, max_len=1000):
+        super().__init__()
+        self.dropout = nn.Dropout(dropout)
+        # Create a long enough P
+        self.P = torch.zeros((1, max_len, num_hiddens))
+        X = torch.arange(max_len, dtype=torch.float32).reshape(
+            -1, 1) / torch.pow(10000, torch.arange(
+            0, num_hiddens, 2, dtype=torch.float32) / num_hiddens)
+        self.P[:, :, 0::2] = torch.sin(X)
+        self.P[:, :, 1::2] = torch.cos(X)
+
+    def forward(self, X):
+        X = X + self.P[:, :X.shape[1], :].to(X.device)
+        return self.dropout(X)
 
 def masked_softmax(X, valid_lens):
     """Perform softmax operation by masking elements on the last axis.

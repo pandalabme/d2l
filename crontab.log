@@ -3051,3 +3051,9 @@ To https://github.com/pandalabme/d2l.git
  delete mode 100644 exercises/ch11/Untitled.ipynb
 To https://github.com/pandalabme/d2l.git
    edfce2a..831c3a2  main -> main
+[main 3fe1ff1] auto
+ 3 files changed, 249 insertions(+)
+ create mode 100644 exercises/ch11/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+ create mode 100644 exercises/ch11/Untitled.ipynb
+To https://github.com/pandalabme/d2l.git
+   831c3a2..3fe1ff1  main -> main
