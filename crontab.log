@@ -3035,3 +3035,9 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    ee9102f..91d8204  main -> main
+[main edfce2a] auto
+ 6 files changed, 216 insertions(+)
+ create mode 100644 exercises/ch11/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+ create mode 100644 exercises/ch11/Untitled.ipynb
+To https://github.com/pandalabme/d2l.git
+   91d8204..edfce2a  main -> main
