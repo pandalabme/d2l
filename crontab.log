@@ -3287,3 +3287,7 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    d3f5148..eb7de36  main -> main
+[main 92fd4c7] auto
+ 1 file changed, 4 insertions(+)
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/pandalabme/d2l.git/'
