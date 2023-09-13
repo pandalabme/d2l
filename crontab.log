@@ -3291,3 +3291,6 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 remote: Invalid username or password.
 fatal: Authentication failed for 'https://github.com/pandalabme/d2l.git/'
+[main e04370a] auto
+ 1 file changed, 4 insertions(+)
+fatal: could not read Username for 'https://github.com': No such device or address
