@@ -3306,3 +3306,7 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 [main f512bdc] auto
  1 file changed, 3 insertions(+)
 fatal: could not read Username for 'https://github.com': No such device or address
+[main 3e1e82e] auto
+ 2 files changed, 3 insertions(+), 185 deletions(-)
+ delete mode 100644 exercises/test.html
+fatal: could not read Username for 'https://github.com': No such device or address
