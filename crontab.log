@@ -3815,3 +3815,6 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 fatal: could not read Username for 'https://github.com': No such device or address
+[main 8179149] auto
+ 1 file changed, 9 insertions(+)
+fatal: could not read Username for 'https://github.com': No such device or address
