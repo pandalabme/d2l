@@ -3796,3 +3796,13 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 [main d73ea52] auto
  1 file changed, 3 insertions(+)
 fatal: could not read Username for 'https://github.com': No such device or address
+On branch main
+Your branch is ahead of 'origin/main' by 170 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.crontab.log.swp
+
+nothing added to commit but untracked files present (use "git add" to track)
+fatal: could not read Username for 'https://github.com': No such device or address
