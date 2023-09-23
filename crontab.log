@@ -3992,3 +3992,6 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 [main 7933a21] auto
  1 file changed, 3 insertions(+)
 fatal: could not read Username for 'https://github.com': No such device or address
+[main 6c2ec7f] auto
+ 1 file changed, 3 insertions(+)
+fatal: could not read Username for 'https://github.com': No such device or address
