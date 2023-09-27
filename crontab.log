@@ -4295,3 +4295,8 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 [main 317478b] auto
  1 file changed, 3 insertions(+)
 fatal: could not read Username for 'https://github.com': No such device or address
+[main 651261f] auto
+ 4 files changed, 96 insertions(+), 3 deletions(-)
+ create mode 100644 exercises/ch15/.ipynb_checkpoints/15_1_6_Exercises-checkpoint.md
+ create mode 100644 exercises/ch15/15_1_6_Exercises.md
+fatal: could not read Username for 'https://github.com': No such device or address
