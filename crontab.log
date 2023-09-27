@@ -4312,3 +4312,8 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 [main 7dac823] auto
  1 file changed, 3 insertions(+)
 fatal: could not read Username for 'https://github.com': No such device or address
+[main e42c708] auto
+ 3 files changed, 252 insertions(+)
+ create mode 100644 exercises/ch15/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+ create mode 100644 exercises/ch15/Untitled.ipynb
+fatal: could not read Username for 'https://github.com': No such device or address
