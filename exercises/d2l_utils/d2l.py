@@ -664,6 +664,7 @@ class RNNLMScratch(Classifier):
         for i in range(len(prefix) + num_preds - 1):
             X = torch.tensor([[outputs[-1]]], device=device)
             embs = self.one_hot(X)
+            # print(embs.shape)
             rnn_outputs, state = self.rnn(embs, state)
             if i < len(prefix) - 1:  # Warm-up period
                 outputs.append(vocab[prefix[i + 1]])
