@@ -4862,3 +4862,6 @@ fatal: could not read Username for 'https://github.com': No such device or addre
  create mode 100644 exercises/ch9/.ipynb_checkpoints/test-checkpoint.ipynb
  create mode 100644 exercises/ch9/test.ipynb
 fatal: could not read Username for 'https://github.com': No such device or address
+[main 20f67a0] auto
+ 1 file changed, 5 insertions(+)
+fatal: could not read Username for 'https://github.com': No such device or address
