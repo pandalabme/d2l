@@ -4913,3 +4913,7 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 [main 135c0e7] auto
  1 file changed, 3 insertions(+)
 fatal: could not read Username for 'https://github.com': No such device or address
+[main 1d86ccc] auto
+ 3 files changed, 3149 insertions(+), 391 deletions(-)
+ rewrite exercises/ch9/test.ipynb (65%)
+fatal: could not read Username for 'https://github.com': No such device or address
