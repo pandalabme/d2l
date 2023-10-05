@@ -4917,3 +4917,6 @@ fatal: could not read Username for 'https://github.com': No such device or addre
  3 files changed, 3149 insertions(+), 391 deletions(-)
  rewrite exercises/ch9/test.ipynb (65%)
 fatal: could not read Username for 'https://github.com': No such device or address
+[main a817b4b] auto
+ 1 file changed, 4 insertions(+)
+fatal: could not read Username for 'https://github.com': No such device or address
