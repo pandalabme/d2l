@@ -5001,3 +5001,6 @@ fatal: could not read Username [main 24023c7] auto
  delete mode 100644 exercises/data/ptb/ptb.train.txt
  delete mode 100644 exercises/data/ptb/ptb.valid.txt
 fatal: could not read Username for 'https://github.com': No such device or address
+[main 96bc349] auto
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+fatal: could not read Username for 'https://github.com': No such device or address
