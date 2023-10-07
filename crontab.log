@@ -4993,4 +4993,11 @@ error: file write error: No space left on device
 fatal: unable to write loose object file
 error: file write error: No space left on device
 fatal: unable to write loose object file
-fatal: could not read Username 
+fatal: could not read Username [main 24023c7] auto
+ 6 files changed, 68 insertions(+), 216389 deletions(-)
+ delete mode 100644 exercises/data/fra-eng/_about.txt
+ delete mode 100644 exercises/data/fra-eng/fra.txt
+ delete mode 100644 exercises/data/ptb/ptb.test.txt
+ delete mode 100644 exercises/data/ptb/ptb.train.txt
+ delete mode 100644 exercises/data/ptb/ptb.valid.txt
+fatal: could not read Username for 'https://github.com': No such device or address
