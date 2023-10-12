@@ -5354,3 +5354,6 @@ fatal: could not read Username for 'https://github.com': No such device or addre
  rewrite exercises/ch9/9_6_4_Exercises.ipynb (79%)
  rewrite exercises/ch9/test.ipynb (66%)
 fatal: could not read Username for 'https://github.com': No such device or address
+[main e349f85] auto
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+fatal: could not read Username for 'https://github.com': No such device or address
