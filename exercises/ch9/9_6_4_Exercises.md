@@ -36,8 +36,9 @@ class Data(d2l.DataModule):
         
     def get_dataloader(self, train):
         features = [self.x[i:self.T-self.tau+i] for i in range(self.tau)]
-        self.features = torch.stack(features, 1)
-        self.labels = self.x[self.tau:].reshape((-1, 1))
+        labels = [self.x[i:self.T-self.tau+i] for i in range(1,self.tau+1)]
+        self.features = torch.stack(features, 1).unsqueeze(dim=-1).swapaxes(0, 1)
+        self.labels = torch.stack(labels, 1).unsqueeze(dim=-1).swapaxes(0, 1)
         i = slice(0, self.num_train) if train else slice(self.num_train, None)
         return self.get_tensorloader([self.features, self.labels], train, i)
     
@@ -66,7 +67,7 @@ class RNNAutoRegression(d2l.LinearRegression):  #@save
 
     def forward(self, X, state=None):
         rnn_outputs, _ = self.rnn(X, state)
-        return self.linear(rnn_outputs)
+        return self.linear(rnn_outputs[-1])
         # return rnn_outputs
 ```
 
@@ -74,29 +75,23 @@ class RNNAutoRegression(d2l.LinearRegression):  #@save
 ```python
 tau=4
 data = Data(tau=tau)
-rnn = RNN(num_inputs=tau, num_hiddens=8)
+rnn = RNN(num_inputs=1, num_hiddens=8)
 model = RNNAutoRegression(rnn=rnn, lr=0.01)
-trainer = d2l.Trainer(max_epochs=5)
+trainer = d2l.Trainer(max_epochs=20)
 trainer.fit(model, data)
 ```
 
 
 
 
-    (1.9249558877199888, 1.2766115963459015)
+    (0.11613031476736069, 0)
 
-
-
-
-    
-![svg](9_6_4_Exercises_files/9_6_4_Exercises_4_1.svg)
-    
 
 
 
 ```python
 onestep_preds = model(data.features).detach().numpy()
-d2l.plot(data.time[data.tau:], [data.labels, onestep_preds], 'time', 'x',
+d2l.plot(data.time[data.tau:], [data.x[data.tau:], onestep_preds], 'time', 'x',
          legend=['labels', '1-step preds'], figsize=(6, 3))
 ```
 
@@ -112,7 +107,7 @@ multistep_preds = torch.zeros(data.T)
 multistep_preds[:] = data.x
 for i in range(data.num_train + data.tau, data.T):
     multistep_preds[i] = model(
-        multistep_preds[i - data.tau:i].reshape((1, -1)))
+        multistep_preds[i - data.tau:i].reshape((data.tau,1,1)))
 multistep_preds = multistep_preds.detach().numpy()
 
 d2l.plot([data.time[data.tau:], data.time[data.num_train+data.tau:]],
