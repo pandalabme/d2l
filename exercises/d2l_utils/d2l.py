@@ -78,7 +78,7 @@ class ProgressBoard(HyperParameters):  #@save
         points = self.raw_points[label]
         line = self.data[label]
         points.append(Point(x, y))
-        print(x,y,label,len(points),every_n)
+        # print(x,y,label,len(points),every_n)
         if len(points) != every_n:
             return
         mean = lambda x: sum(x) / len(x)
@@ -161,7 +161,7 @@ class Module(nn.Module, HyperParameters):
             x = self.trainer.epoch + 1
             n = self.trainer.num_val_batches / self.plot_valid_per_epoch
         # print(train,x)
-        print(self.trainer.num_train_batches,n)
+        # print(self.trainer.num_train_batches,n)
         self.board.draw(x, value.detach().numpy(),
                         ('train_' if train else 'val_') + key, every_n=int(n))
 
@@ -243,6 +243,7 @@ class Trainer(HyperParameters):
         for batch in self.train_dataloader:
             # if len(batch[0]) != 32:
             #     print(len(batch[0]))
+            print(batch[0].shape)
             loss = self.model.training_step(self.prepare_batch(batch),
                                             plot_flag=self.plot_flag)
             # print(f'step train loss:{loss}, T:{self.model.T}')
