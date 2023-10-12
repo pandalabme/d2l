@@ -78,6 +78,7 @@ class ProgressBoard(HyperParameters):  #@save
         points = self.raw_points[label]
         line = self.data[label]
         points.append(Point(x, y))
+        print(x,y,label,len(points),every_n)
         if len(points) != every_n:
             return
         mean = lambda x: sum(x) / len(x)
@@ -152,6 +153,7 @@ class Module(nn.Module, HyperParameters):
     def plot(self, key, value, train):
         assert(self, 'trainer'), 'trainer is not inited'
         self.board.xlabel = 'epoch'
+        
         if train:
             x = self.trainer.train_batch_idx / self.trainer.num_train_batches
             n = self.trainer.num_train_batches / self.plot_train_per_epoch
@@ -159,6 +161,7 @@ class Module(nn.Module, HyperParameters):
             x = self.trainer.epoch + 1
             n = self.trainer.num_val_batches / self.plot_valid_per_epoch
         # print(train,x)
+        print(self.trainer.num_train_batches,n)
         self.board.draw(x, value.detach().numpy(),
                         ('train_' if train else 'val_') + key, every_n=int(n))
 
