@@ -5363,3 +5363,9 @@ fatal: could not read Username for 'https://github.com': No such device or addre
  4 files changed, 65 insertions(+), 2 deletions(-)
 To https://github.com/pandalabme/d2l.git
    56f32d0..b3482bf  main -> main
+[main 2e36529] auto
+ 7 files changed, 4758 insertions(+), 4765 deletions(-)
+ copy exercises/ch9/{9_6_4_Exercises.ipynb => .ipynb_checkpoints/9_6_4_Exercises-checkpoint.ipynb} (99%)
+ rewrite exercises/ch9/9_6_4_Exercises.ipynb (61%)
+To https://github.com/pandalabme/d2l.git
+   b3482bf..2e36529  main -> main
