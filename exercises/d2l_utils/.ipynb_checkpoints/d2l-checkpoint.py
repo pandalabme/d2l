@@ -166,6 +166,7 @@ class Module(nn.Module, HyperParameters):
                         ('train_' if train else 'val_') + key, every_n=int(n))
 
     def training_step(self, batch, plot_flag=True):
+        
         l = self.loss(self(*batch[:-1]), batch[-1])
         if plot_flag:
             self.plot('loss', l, train=True)
@@ -246,7 +247,7 @@ class Trainer(HyperParameters):
             # print(batch[0].shape)
             loss = self.model.training_step(self.prepare_batch(batch),
                                             plot_flag=self.plot_flag)
-            print(batch[0].shape,f'step train loss:{loss}')
+            # print(batch[0].shape,f'step train loss:{loss}')
             self.optim.zero_grad()
             with torch.no_grad():
                 loss.backward()
@@ -331,6 +332,7 @@ class LinearRegression(Module):
         return fn(y_hat, y)
     
     def training_step(self, batch, plot_flag=True):
+        print(batch[0].shape)
         l = self.loss(self(*batch[:-1]), batch[-1])
         if plot_flag:
             self.plot('loss', l, train=True)

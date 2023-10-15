@@ -166,6 +166,7 @@ class Module(nn.Module, HyperParameters):
                         ('train_' if train else 'val_') + key, every_n=int(n))
 
     def training_step(self, batch, plot_flag=True):
+        
         l = self.loss(self(*batch[:-1]), batch[-1])
         if plot_flag:
             self.plot('loss', l, train=True)
