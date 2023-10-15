@@ -332,7 +332,6 @@ class LinearRegression(Module):
         return fn(y_hat, y)
     
     def training_step(self, batch, plot_flag=True):
-        print(batch[0].shape)
         l = self.loss(self(*batch[:-1]), batch[-1])
         if plot_flag:
             self.plot('loss', l, train=True)
