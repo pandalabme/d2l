@@ -243,10 +243,10 @@ class Trainer(HyperParameters):
         for batch in self.train_dataloader:
             # if len(batch[0]) != 32:
             #     print(len(batch[0]))
-            print(batch[0].shape)
+            # print(batch[0].shape)
             loss = self.model.training_step(self.prepare_batch(batch),
                                             plot_flag=self.plot_flag)
-            # print(f'step train loss:{loss}, T:{self.model.T}')
+            # print(batch[0].shape,f'step train loss:{loss}')
             self.optim.zero_grad()
             with torch.no_grad():
                 loss.backward()
