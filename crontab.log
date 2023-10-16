@@ -5716,3 +5716,11 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    9aaf496..9ae39c9  main -> main
+[main 5828376] auto
+ 7 files changed, 10279 insertions(+), 5447 deletions(-)
+ create mode 100644 exercises/ch9/9_6_4_Exercises_files/.ipynb_checkpoints/9_6_4_Exercises_4_1-checkpoint.svg
+ rewrite exercises/ch9/9_6_4_Exercises_files/9_6_4_Exercises_4_1.svg (73%)
+ rewrite exercises/ch9/9_6_4_Exercises_files/9_6_4_Exercises_5_0.svg (70%)
+ rewrite exercises/ch9/9_6_4_Exercises_files/9_6_4_Exercises_6_0.svg (62%)
+To https://github.com/pandalabme/d2l.git
+   9ae39c9..5828376  main -> main
