@@ -29,7 +29,7 @@ from sklearn.model_selection import ParameterGrid
 warnings.filterwarnings("ignore")
 
 class Data(d2l.DataModule):
-    def __init__(self, batch_size=16, T=1000, num_train=600, tau=4, randn=0.2):
+    def __init__(self, batch_size=320, T=1000, num_train=600, tau=4, randn=0.2):
         self.save_hyperparameters()
         self.time = torch.range(1, T, dtype=torch.float32)
         self.x = torch.sin(0.01*self.time) + torch.randn(T)*randn
@@ -37,8 +37,8 @@ class Data(d2l.DataModule):
     def get_dataloader(self, train):
         features = [self.x[i:self.T-self.tau+i] for i in range(self.tau)]
         labels = [self.x[i:self.T-self.tau+i] for i in range(1,self.tau+1)]
-        self.features = torch.stack(features, 1).unsqueeze(dim=-1).swapaxes(0, 1)
-        self.labels = torch.stack(labels, 1).unsqueeze(dim=-1).swapaxes(0, 1)
+        self.features = torch.stack(features, 1).unsqueeze(dim=-1)#.swapaxes(0, 1)
+        self.labels = torch.stack(labels, 1).unsqueeze(dim=-1)#.swapaxes(0, 1)
         i = slice(0, self.num_train) if train else slice(self.num_train, None)
         return self.get_tensorloader([self.features, self.labels], train, i)
     
@@ -66,9 +66,9 @@ class RNNAutoRegression(d2l.LinearRegression):  #@save
         self.init_params()   
 
     def forward(self, X, state=None):
-        rnn_outputs, _ = self.rnn(X, state)
-        return self.linear(rnn_outputs[-1])
-        # return rnn_outputs
+        rnn_outputs, _ = self.rnn(X.swapaxes(0, 1), state)
+        outputs = [self.linear(H) for H in rnn_outputs]
+        return torch.stack(outputs, 1)
 ```
 
 
@@ -84,14 +84,20 @@ trainer.fit(model, data)
 
 
 
-    (0.11613031476736069, 0)
+    (0.1492438092827797, 0.11654583364725113)
 
+
+
+
+    
+![svg](9_6_4_Exercises_files/9_6_4_Exercises_4_1.svg)
+    
 
 
 
 ```python
 onestep_preds = model(data.features).detach().numpy()
-d2l.plot(data.time[data.tau:], [data.x[data.tau:], onestep_preds], 'time', 'x',
+d2l.plot(data.time[data.tau:], [data.x[data.tau:], onestep_preds[:,-1].reshape(-1)], 'time', 'x',
          legend=['labels', '1-step preds'], figsize=(6, 3))
 ```
 
@@ -106,12 +112,13 @@ d2l.plot(data.time[data.tau:], [data.x[data.tau:], onestep_preds], 'time', 'x',
 multistep_preds = torch.zeros(data.T)
 multistep_preds[:] = data.x
 for i in range(data.num_train + data.tau, data.T):
-    multistep_preds[i] = model(
-        multistep_preds[i - data.tau:i].reshape((data.tau,1,1)))
+    temp = model(
+        multistep_preds[i - data.tau:i].reshape((1,data.tau,1)))
+    # print(temp.shape,temp[:,-1].item())
+    multistep_preds[i] = temp[:,-1].item()
 multistep_preds = multistep_preds.detach().numpy()
-
 d2l.plot([data.time[data.tau:], data.time[data.num_train+data.tau:]],
-         [onestep_preds, multistep_preds[data.num_train+data.tau:]], 'time',
+         [onestep_preds[:,-1].reshape(-1), multistep_preds[data.num_train+data.tau:]], 'time',
          'x', legend=['1-step preds', 'multistep preds'], figsize=(6, 3))
 ```
 
