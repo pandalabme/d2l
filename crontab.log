@@ -5963,3 +5963,8 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    2d90a49..90849b6  main -> main
+[main 46e07ec] auto
+ 2 files changed, 2164 insertions(+), 44236 deletions(-)
+ rewrite exercises/ch15/15_4_5_Exercises.ipynb (92%)
+To https://github.com/pandalabme/d2l.git
+   90849b6..46e07ec  main -> main
