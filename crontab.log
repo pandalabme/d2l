@@ -5918,3 +5918,12 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    002a23a..f99ccd6  main -> main
+[main 225d226] auto
+ 6 files changed, 49356 insertions(+), 144 deletions(-)
+ rename exercises/ch15/.ipynb_checkpoints/{Untitled-checkpoint.ipynb => 15_4_5_Exercises-checkpoint.ipynb} (100%)
+ rename exercises/ch15/{Untitled.ipynb => 15_4_5_Exercises.ipynb} (85%)
+ create mode 100644 exercises/data/ptb/ptb.test.txt
+ create mode 100644 exercises/data/ptb/ptb.train.txt
+ create mode 100644 exercises/data/ptb/ptb.valid.txt
+To https://github.com/pandalabme/d2l.git
+   f99ccd6..225d226  main -> main
