@@ -8706,3 +8706,6 @@ To https://github.com/pandalabme/d2l.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/d2l.git
    d0aacca..f61d7ce  main -> main
+[main 1951fed] auto
+ 1 file changed, 4 insertions(+)
+fatal: unable to access 'https://github.com/pandalabme/d2l.git/': Could not resolve host: github.com
