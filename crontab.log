@@ -10026,3 +10026,26 @@ To https://github.com/pandalabme/d2l.git
  create mode 100644 exercises/ch15/15_6_4_Exercises.md
 To https://github.com/pandalabme/d2l.git
    baa7cf3..9686639  main -> main
+[main 378b8d7] auto
+ 22 files changed, 3773 insertions(+), 64 deletions(-)
+ create mode 100644 exercises/ch15/.ipynb_checkpoints/15_5_5_Exercises-checkpoint.md
+ create mode 100644 exercises/ch15/.ipynb_checkpoints/15_7_4_Exercises-checkpoint.ipynb
+ create mode 100644 exercises/ch15/.ipynb_checkpoints/15_7_4_Exercises-checkpoint.md
+ create mode 100644 exercises/ch15/15_5_5_Exercises.md
+ create mode 100644 exercises/ch15/15_5_5_Exercises_files/.ipynb_checkpoints/15_5_5_Exercises_3_0-checkpoint.svg
+ create mode 100644 exercises/ch15/15_5_5_Exercises_files/.ipynb_checkpoints/15_5_5_Exercises_3_2-checkpoint.svg
+ create mode 100644 exercises/ch15/15_5_5_Exercises_files/15_5_5_Exercises_3_0.svg
+ create mode 100644 exercises/ch15/15_5_5_Exercises_files/15_5_5_Exercises_3_2.svg
+ create mode 100644 exercises/ch15/15_7_4_Exercises.ipynb
+ create mode 100644 exercises/ch15/15_7_4_Exercises.md
+ delete mode 100644 exercises/data/FashionMNIST/raw/t10k-images-idx3-ubyte
+ delete mode 100644 exercises/data/FashionMNIST/raw/t10k-images-idx3-ubyte.gz
+ delete mode 100644 exercises/data/FashionMNIST/raw/t10k-labels-idx1-ubyte
+ delete mode 100644 exercises/data/FashionMNIST/raw/t10k-labels-idx1-ubyte.gz
+ delete mode 100644 exercises/data/FashionMNIST/raw/train-images-idx3-ubyte
+ delete mode 100644 exercises/data/FashionMNIST/raw/train-images-idx3-ubyte.gz
+ delete mode 100644 exercises/data/FashionMNIST/raw/train-labels-idx1-ubyte
+ delete mode 100644 exercises/data/FashionMNIST/raw/train-labels-idx1-ubyte.gz
+ delete mode 100644 exercises/data/fra-eng.zip
+To https://github.com/pandalabme/d2l.git
+   9686639..378b8d7  main -> main
