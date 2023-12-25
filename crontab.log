@@ -12446,3 +12446,17 @@ may have crashed in this repository earlier:
 remove the file manually to continue.
 [main 9222a38] auto
  1 file changed, 9 insertions(+)
+[main e44feb3] auto
+ 1 file changed, 9 insertions(+)
+fatal: unable to get credential storage lock: File exists
+To https://github.com/pandalabme/d2l.git
+ ! [remote rejected] main -> main (cannot lock ref 'refs/heads/main': is at e44feb39ce7d5e04d7a35886ed818d790f31f93b but expected d1361fed43fe870cbb5508112c57270b9a9237d3)
+error: failed to push some refs to 'https://github.com/pandalabme/d2l.git'
+To https://github.com/pandalabme/d2l.git
+ ! [remote rejected] main -> main (cannot lock ref 'refs/heads/main': is at e44feb39ce7d5e04d7a35886ed818d790f31f93b but expected d1361fed43fe870cbb5508112c57270b9a9237d3)
+error: failed to push some refs to 'https://github.com/pandalabme/d2l.git'
+To https://github.com/pandalabme/d2l.git
+ ! [remote rejected] main -> main (cannot lock ref 'refs/heads/main': is at e44feb39ce7d5e04d7a35886ed818d790f31f93b but expected d1361fed43fe870cbb5508112c57270b9a9237d3)
+error: failed to push some refs to 'https://github.com/pandalabme/d2l.git'
+To https://github.com/pandalabme/d2l.git
+   d1361fe..e44feb3  main -> main
